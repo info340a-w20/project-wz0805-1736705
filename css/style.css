@@ -14,11 +14,15 @@ body {
 
 
 a {
-    color: #ae5322;
+    color: #173F5F;
 }
 
 .page-title {
     text-align: center;
+}
+
+.page-title p {
+    color: #59564e;
 }
 
 img {
@@ -35,7 +39,7 @@ p {
 
 }
 
-li u {
+li h3 {
     font-weight: bold;
     margin-left: 10px;
 }

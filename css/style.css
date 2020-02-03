@@ -1,5 +1,82 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap');
 
+
+
+#header {
+    background: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
+    color: inherit;
+    cursor: default;
+    font-size: 1em;
+    left: 0;
+    padding: 1em 1.5em;
+    position: fixed;
+    top: 0;
+    width: 98%;
+    z-index: 10000;
+}
+
+#header h1 {
+    font-weight: 900;
+    margin: 0;
+}
+
+    #header h1 a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+#header nav {
+    letter-spacing: 0.075em;
+    position: absolute;
+    right: 1.5em;
+    text-transform: uppercase;
+    top: 0.75em;
+}
+
+    #header nav ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+        #header nav ul li {
+            display: inline-block;
+            margin-left: 1.5em;
+            padding-left: 0;
+        }
+
+            #header nav ul li > ul {
+                display: none;
+            }
+
+            #header nav ul li a {
+                border: solid 1px transparent;
+                color: inherit;
+                display: inline-block;
+                line-height: 1em;
+                padding: 0.6em 0.75em;
+                text-decoration: none;
+            }
+
+
+            #header nav ul li .button {
+                font-size: 1em;
+                min-width: 0;
+                width: auto;
+            }
+
+            #header nav ul li.active > a, #header nav ul li:hover > a, #header nav ul li:focus > a {
+                -moz-transition: all 0.2s ease-in-out;
+                -webkit-transition: all 0.2s ease-in-out;
+                -ms-transition: all 0.2s ease-in-out;
+                transition: all 0.2s ease-in-out;
+                background: rgba(188, 202, 206, 0.15);
+            }
+
+            #header nav ul li.current > a {
+                font-weight: 900;
+            }
+
 body {
     font-family: 'Poppins', sans-serif;
     margin-left: auto;
@@ -13,7 +90,7 @@ body {
 
 
 
-a {
+body main a {
     color: #173F5F;
 }
 

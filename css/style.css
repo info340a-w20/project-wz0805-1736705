@@ -81,16 +81,37 @@ body {
     font-family: 'Poppins', sans-serif;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
     color: #59564e;
-    background-color: #FEE5A8;
+    background-color: rgb(240, 224, 207);
     line-height: 35px;
 
 }
+main{
+    margin-top:5rem;
+}
+#homebody{
+    width: 70%;
+}
 
+.jumbotron{
+    background-image: url('../img/background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity:0.9;
+}
 
+#communitymain{
+    background-color: rgb(240, 224, 207);
+}
 
-body main a {
+.image-fluid{
+    display: block;
+    width:auto;
+    height: 17rem;
+}
+
+footer a {
     color: #173F5F;
 }
 
@@ -112,13 +133,20 @@ header {
 }
 
 p {
-    text-indent: 4%;
+    text-indent: 3%;
 
 }
 
-li h3 {
-    font-weight: bold;
-    margin-left: 10px;
+
+#jumbotron-heading {
+    text-align: center;
+}
+
+footer {
+    padding-top: 1rem;
+    font-size: 80%;
+    text-align: left;
+    padding: .5rem;
 }
 
 @media (min-width: 992px) {

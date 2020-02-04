@@ -4,35 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Nina Zhang, Zhan Wu">
-    <title>Info340 Project Stage1</title>
+    <title>Info340 Project Stage2</title>
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 </head>
 
 <body>
+    <div class="hero-image">
+        <div class="dropdown">
+            <button class="dropbtn">
+                <img id="menu" alt="menu bar" src="https://img.icons8.com/material-rounded/48/000000/menu.png">
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="community.html">Community</a>
+                <a href="saved.html">Saved Recipes</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+        </div>
+        <div class="hero-text">
+            <h1>Some hints for what to cook? </h1>
+            <p>Here are several questions can help you decide</p>
+            <button>Get Start</button>
+        </div>
+    </div>
     <header id="header" class="alt">
         <h1 id="logo"><a href="index.html">Mood Recipes</a></h1>
+
         <nav id="nav">
             <ul>
                 <li class="current"><a href="index.html">Welcome</a></li>
                 <li><a href="community.html">Community</a></li>
                 <li><a href="saved.html">Saved Recipes</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
                 <li><a href="#" class="button primary">Sign Up</a></li>
             </ul>
         </nav>
     </header>
-    <!--<header class="page-title">
-        <h1>Info340 Project Stage1 Proposal</h1>
-        <p>Easier cooking, better living!</p>
-    </header>-->
+
     <main>
         <section>
-            <header>
-                <h2>Topic Description:</h2>
-            </header>
-            <img src="https://cdn.pixabay.com/photo/2016/02/05/15/34/pasta-1181189_1280.jpg" alt="pasta cooking" id="pic-1"/>
-            <p class="intro-1">
+            <h2 id="ourAppH2">Why Us?</h2>
+            <p id="intro-1">
                 Whether someone is a busy working crew, a parent supporting a whole family, or any college students living on their own,
                 home cooking and preparing food is always a tough process. Cooking itself is already such a pain, and it even takes
                 longer to search through the market and prepare for the ingredients. Especially for people returning home after a
@@ -41,8 +54,7 @@
                 a functional application targeted on those who have no time looking through the bulky recipes each day, save their time
                 and bring the dishes they like to the table.
             </p>
-            <img src="https://cdn.pixabay.com/photo/2017/03/10/13/57/cooking-2132874_1280.jpg" id="pic-2" alt="making dumplings"/>
-            <p class="intro-2">
+            <p id="intro-2">
                 The existing applications designated to help people cooking are still in lack of some important features the users may need.
                 One of the very intelligent cooking websites that inspire us is the <a href="https://www.supercook.com/#/recipes">Supercook</a>
                 which allows users to enter the ingredients they have in the fridge and generate ready-to-cook recipes. It is quite easy to use,
@@ -54,48 +66,30 @@
                 which could be highly convenient. Therefore, we brainstorm several possible applications that may solve cooking problems in different
                 ways. It may have a better filtering functionality, a community sharing feature, or an ingredients purchasing option. Overall, we
                 want to promote the exchange and inspiration for cooking ideas and bring people better experiences of cooking!
-
             </p>
-
         </section>
+        <img src="https://cdn.pixabay.com/photo/2017/03/10/13/57/cooking-2132874_1280.jpg" id="pic-2" alt="making dumplings"/>
         <section>
-            <header>
-                <h2>Potential Web Applications:</h2>
-            </header>
-            <div>
-            </div>
-            <p>
-                <ol>
-                    <li><h3>Recipe Community:</h3>
-                        <p>The overarching goal of the recipe community app will be sharing every user’s own recipes to the whole community so that
-                            other people can have more ideas on what they want to cook. People can see the latest and most popular shared recipes on
-                            this app. It also has recipes sorted by locations or countries, for example, Mexican Food, American Food, Italian Food,
-                            etc. When the user finds the recipe they like, they can add the ingredients in that recipe into their shopping cart and
-                            purchase it online, and the online grocery stores will deliver the ingredients to users, or the users can choose to pick
-                            them up at a local store. The users can save time on shopping for the ingredients they need.
-                        </p>
-                    </li>
-                    <li><h3>“Mood” Recipes:</h3>
-                        <p>The overarching goal of the “mood” recipes application will be recommending recipes to the users. It will let the users
-                            answer several questions, and the system will automatically recommend recipes to them based on the answers. For example,
-                            on a cold winter night, you and your family members are celebrating for your graduation, and you want to eat some warm
-                            Asian food, the system will be likely to recommend you Chinese Spicy Hotpot, Japanese Sukiyaki, Korean Budae Jjigae,
-                            and some similar food which can make you warmer, good for sharing. The system can make the best choices based on your
-                            occasions, the number of people, the current weather, and so on. The users can have the most appropriate food on each
-                            specific day and time.</p>
-                    </li>
-                    <li><h3>Cook With Available Ingredients</h3>
-                        <p>The overarching goal of the cook with the available ingredients app is giving the users some ideas to cook with the
-                            ingredients they have at home. Users can put the available ingredients and available cooking time into the system and
-                            get a list of recipes they can choose from. For example, a user has ground beef, beef brisket, lasagne, tomatoes, potatoes,
-                            eggs, and butter at home, and if he only has 5 minutes to cook, the system will recommend you to cook over-easy eggs,
-                            scrambled eggs, and some other simple dishes, but if you have 2 hours to cook, the system will recommend you to cook
-                            beef lasagne, braised beef brisket with tomato, and some other more complex recipes which may take longer time for preparing
-                            and cooking. The users can cook by using the ingredients they currently have within their time frames.</p>
-                    </li>
-                </ol>
-            </p>
+                <div id="ourApp">
+                    <h2 id="ourAppH2">“Mood” Recipes</h2>
+                    <p>
+                        The overarching goal of the “mood” recipes application will be recommending recipes to the users. It will let the users
+                        answer several questions, and the system will automatically recommend recipes to them based on the answers. For example,
+                        on a cold winter night, you and your family members are celebrating for your graduation, and you want to eat some warm
+                        Asian food, the system will be likely to recommend you Chinese Spicy Hotpot, Japanese Sukiyaki, Korean Budae Jjigae,
+                        and some similar food which can make you warmer, good for sharing. The system can make the best choices based on your
+                        occasions, the number of people, the current weather, and so on. The users can have the most appropriate food on each
+                        specific day and time.
+                    </p>
+                </div>
         </section>
     </main>
+    <footer id="contact">
+       <p>This page is a cooperative course work created by Nina Zhang and Zhan Wu as an initial static version of this web app.</p>
+       <address><p>
+           Contact us at <a href="mailto:xz67@uw.edu">xz67@uw.edu</a>, or at <a href="mailto:alex.zhan.wu@icloud.com">alex.zhan.wu@icloud.com</a>.
+       </p></address>
+       <p>&copy; 2020 The Author.</p>
+   </footer>
 </body>
 </html>

@@ -87,49 +87,18 @@ a {
   background-color: rgba(188, 202, 206, 0.15);
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    margin-left: auto;
-    margin-right: auto;
-    color: #59564e;
-    background-color: rgb(240, 224, 207);
-    line-height: 35px;
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
-main{
-    margin-top:5rem;
-}
-#homebody{
-    width: 70%;
-}
 
-.jumbotron{
-    background-image: url('../img/background.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity:0.9;
-}
-
-#communitymain{
-    background-color: rgb(240, 224, 207);
 #header {
     margin-left: 25px;
     padding-top: 25px;
 }
 
-.image-fluid{
-    display: block;
-    width:auto;
-    height: 17rem;
-}
 
-footer a {
-    color: #173F5F;
-}
 
 #intro-1, #intro-2{
     text-indent: 3%;
@@ -168,13 +137,6 @@ body, html {
   color: white;
 }
 
-p {
-    text-indent: 3%;
-
-}
-
-
-#jumbotron-heading {
 #ourApp {
     margin-left: 15%;
     margin-right: 15%;

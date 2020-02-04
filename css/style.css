@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap');
 
 
-body {
+#homebody {
     font-family: 'Poppins', sans-serif;
     margin-left: auto;
     margin-right: auto;
@@ -108,7 +108,7 @@ a {
 
 }
 
-body, html {
+#homebody, html {
     height: 100%;
 }
 
@@ -180,7 +180,7 @@ footer {
         display: none;
     }
 
-    body #header {
+    #homebody #header {
         background: rgba(255, 255, 255, 0.55);
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
         margin-left: 0;

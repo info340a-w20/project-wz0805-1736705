@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Nina Zhang, Zhan Wu">
-    <title>Info340 Project Stage2 Community Page</title>
+    <title>Info340 Project Stage2 Saved Page</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -14,7 +14,7 @@
 </head>
 
 <body id="homebody">
-    <div class="hero-image1">
+    <div class="hero-image2">
         <div class="drop">
             <button class="dropbtn">
                 <img id="menu" alt="menu bar" src="https://img.icons8.com/material-rounded/48/000000/menu.png">
@@ -25,21 +25,11 @@
                 <a href="community.html">Community</a>
                 <a href="saved.html">Saved Recipes</a>
                 <a href="#contact">Contact Us</a>
-            </div>
         </div>
-        <div class="hero-text1">
-            <h1>Communities</h1>
-            <p>Share and post in our community!</p>
-            <div class="container" id="filter">
-                <p>Filter:
-                    <a href="#" class="btn btn-light my-1">Time</a>
-                    <a href="#" class="btn btn-light my-1">Ingredients</a>
-                    <a href="#" class="btn btn-light my-1">Tag</a>
-                </p>
-                <p>
-                    <a href="post.html" class="btn btn-warning">Post Your Own</a>
-                </p>
-            </div>
+        </div>
+        <div class="hero-text2">
+            <h1>Saved Recipes</h1>
+            <p>Here you can view the recipes you liked and saved here before!</p>
         </div>
     </div>
     <header id="header" class="alt">
@@ -47,32 +37,20 @@
         <nav id="nav">
             <ul>
                 <li><a href="index.html">Welcome</a></li>
-                <li class="current"><a href="community.html">Community</a></liclass="current">
-                <li><a href="saved.html">Saved Recipes</a></li>
+                <li><a href="community.html">Community</a></liclass="current">
+                <li class="current"><a href="saved.html">Saved Recipes</a></li>
                 <li><a href="#contact">Contact Us</a></li>
                 <li><a href="#" class="button primary">Sign Up</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <div class="album py-5" id="communitymain">
+
+
+        <div class="album py-5" id="savedmain">
             <div class="container">
 
                 <div class="row">
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="card mb-4 box-shadow">
-                            <img src="img/scrambled.jpg" class="image-fluid" alt="scrambled egg">
-                            <div class="card-body">
-                                <p class="card-text">Breakfast scrambled egg with bun and chives</p>
-                                <div class="d-flex justify-content-between">
-                                    <span class="type-span"><mark>Quick</mark>  <mark>Breakfast</mark></span>
-                                </div>
-                            </div>
-                            <div class="card-footer text-right text-muted">
-                                <p><small>Ella Lin</small></p>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-sm-12 col-lg-4">
                         <div class="card mb-4 box-shadow">
                             <img src="img/strawberry.jpg" class="image-fluid" alt="strawberry cereal yogurt">
@@ -101,21 +79,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="card mb-4 box-shadow">
-                            <img src="img/lasagna.jpg" class="image-fluid" alt="baked lasagna">
-                            <div class="card-body">
-                                <p class="card-text">Italian sytle baked lasagna with tomato and cheese!</p>
-                                <div class="d-flex justify-content-between">
-                                    <span class="type-span"><mark>Italian</mark>  <mark>Pasta</mark>  <mark>Baking</mark>  <mark>Lasagna</mark></span>
-                                </div>
-                            </div>
-                            <div class="card-footer text-right text-muted">
-                                <p><small>Liberty Elliott</small></p>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-sm-12 col-lg-4">
                         <div class="card mb-4 box-shadow">
                             <img src="img/steak.jpg" class="image-fluid" alt="beef steak plate">
@@ -130,21 +93,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="card mb-4 box-shadow">
-                            <img src="img/kimchi.jpg" class="image-fluid" alt="kimchi fried rice">
-                            <div class="card-body">
-                                <p class="card-text">Delicious korean kimchi fried rice: 20mins cook at home and just as good!</p>
-                                <div class="d-flex justify-content-between">
-                                    <span class="type-span"><mark>Korean</mark>  <mark>Asian</mark>  <mark>Rice</mark></span>
-                                </div>
-                            </div>
-                            <div class="card-footer text-right text-muted">
-                                <p><small>Traci Roach</small></p>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="col-sm-12 col-lg-4">
                         <div class="card mb-4 box-shadow">
                             <img src="img/fish.jpg" class="image-fluid" alt="zander filet dinner">
@@ -170,20 +118,6 @@
                             </div>
                             <div class="card-footer text-right text-muted">
                                 <p><small>Josiah Estes</small></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="card mb-4 box-shadow">
-                            <img src="img/christmas.jpg" class="image-fluid" alt="christmas stollen">
-                            <div class="card-body">
-                                <p class="card-text">Perfect sweet for Christmas eve! Fruity stollen with raisins</p>
-                                <div class="d-flex justify-content-between">
-                                    <span class="type-span"><mark>Dessert</mark>  <mark>Raisin</mark>  <mark>Sweet</mark></span>
-                                </div>
-                            </div>
-                            <div class="card-footer text-right text-muted">
-                                <p><small>Maya Hull</small></p>
                             </div>
                         </div>
                     </div>

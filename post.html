@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Nina Zhang, Zhan Wu">
+    <title>Info340 Project Stage2 Post Page</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+<body id="homebody3">
+    <div class="hero-image3">
+        <div class="drop">
+            <button class="dropbtn">
+                <img id="menu" alt="menu bar" src="https://img.icons8.com/material-rounded/48/000000/menu.png">
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="drop-content">
+                <a href="index.html">Welcome</a>
+                <a href="community.html">Community</a>
+                <a href="saved.html">Saved Recipes</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+        </div>
+        <div class="hero-text3">
+            <h1 class="display-lg">Make your post</h1>
+            <div class="container">
+                <div class="row">
+                    <div>
+                        <form action="" method="POST">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="title" class="title-text">Title <span class="require">*</span></label>
+                                    <input type="text" class="form-control" name="title" placeholder="Title of your recipe"/>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="description" class="title-text require">Description <span class="require">*</span></label>
+                                    <textarea rows="5" class="form-control" name="description" placeholder="Give your recipe a introduction"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="tag" class="title-text">Tags</label>
+                                    <form class="form-inline">
+                                        <i class="fas fa-search" aria-hidden="true"></i>
+                                        <input class="form-control" type="text" placeholder="Search Tags"
+                                          aria-label="Search">
+                                    </form>
+                                </div>
+                                <div class="form-group col-md-6" style="display: inline, width: 50%;">
+                                    <label for="time" class="title-text">Time Needed</label>
+                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                      <option selected>Choose...</option>
+                                      <option value="1">Under 15 mins</option>
+                                      <option value="2">15-30 mins</option>
+                                      <option value="3">30-60 mins</option>
+                                      <option value="3">60-120 mins</option>
+                                      <option value="3">Over 120 mins</option>
+    
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row upload-file">
+                                <div class="form-group col-md-12">
+                                    <div class="custom-file">
+                                        <label class="custom-file-label display-lg" for="fileUpload">Upload an image</label>
+                                        <label class="custom-file-label display-sm" for="fileUpload">Upload</label>
+                                        <input type="file" class="custom-file-input" name="fileUpload">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <button type="submit" class="post-button btn btn-warning">
+                                        Create
+                                    </button>
+                                    <a href="community.html" class="post-button btn btn-light">Cancel</a>
+                                </div>
+                            </div>
+                            
+                             
+                        </form>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    
+    <header id="header" class="alt">
+        <h1 id="logo">Mood Recipes</h1>
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">Welcome</a></li>
+                <li class="current"><a href="community.html">Community</a></liclass="current">
+                <li><a href="saved.html">Saved Recipes</a></li>
+                <li><a href="community.html#contact">Contact Us</a></li>
+                <li><a href="#" class="button primary">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

@@ -26,14 +26,14 @@ footer a{
     color: #173F5F;
 }
 
-/* The dropdown container */
-.dropdown {
+/* The drop container */
+.drop {
     float: left;
     overflow: hidden;
 }
 
-/* Dropdown button */
-.dropdown .dropbtn {
+/* drop button */
+.drop .dropbtn {
     font-size: 16px;
     border: none;
     outline: none;
@@ -45,12 +45,12 @@ footer a{
 }
 
 /* Add a red background color to navbar links on hover */
-.dropdown:hover .dropbtn, .dropdown:focus .dropbtn {
+.drop:hover .dropbtn, .drop:focus .dropbtn {
     background-color: rgba(188, 202, 206, 0.15);
 }
 
-/* Dropdown content (hidden by default) */
-.dropdown-content {
+/* drop content (hidden by default) */
+.drop-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -59,8 +59,8 @@ footer a{
     z-index: 1;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
+/* Links inside the drop */
+.drop-content a {
     float: none;
     color: black;
     padding: 12px 16px;
@@ -69,14 +69,14 @@ footer a{
     text-align: left;
 }
 
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover, .dropdown-content a:focus {
+/* Add a grey background color to drop links on hover */
+.drop-content a:hover, .drop-content a:focus {
     background-color: rgba(188, 202, 206, 0.15);
 }
 
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+/* Show the drop menu on hover */
+.drop:hover .drop-content {
     display: block;
 }
 
@@ -184,7 +184,7 @@ footer {
 
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1098px) {
 
     #pic-2 {
         height: 300px;
@@ -194,12 +194,12 @@ footer {
 
     }
 
-    .dropdown {
+    .drop {
         display: none;
     }
 
     #header {
-        width: 98%;
+        width: 100%;
     }
 
     #homebody #header {

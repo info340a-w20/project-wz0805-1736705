@@ -183,7 +183,19 @@ footer {
     margin-bottom: 25px;
 
 }
-
+/*new*/
+.card p{
+    line-height: 1.5rem;
+}
+.d-flex p{
+    font-size: small;
+    margin-bottom: 0rem;
+    margin-top:1rem;
+}
+.card-footer{
+    height:3rem;
+}
+/*new*/
 @media (min-width: 1098px) {
 
     #pic-2 {
@@ -213,6 +225,7 @@ footer {
         position: fixed;
         top: 0;
         display: block;
+        z-index: 1;
     }
 
     #header.ctrl{

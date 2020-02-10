@@ -85,7 +85,7 @@ footer a{
 }
 .image-fluid {
     width: auto;
-    height: 15rem;
+    height: 20rem;
 }
 
 #header {
@@ -184,17 +184,22 @@ footer {
 
 }
 /*new*/
-.card p{
+.card{
     line-height: 1.5rem;
 }
-.d-flex p{
+.d-flex span{
     font-size: small;
-    margin-bottom: 0rem;
-    margin-top:1rem;
+    position: absolute;
+    left: 1rem;
+    bottom:3.5rem;
 }
 .card-footer{
     height:3rem;
 }
+.card-body{
+    height:150px;
+}
+
 /*new*/
 @media (min-width: 1098px) {
 

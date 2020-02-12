@@ -295,10 +295,10 @@ footer {
         font-weight: 900;
         margin: 0;
     }
-    #contact p{
+    .index-footer p{
         color:#f1faee;
     }
-    #contact a{
+    .index-footer a{
         color:#defffa;
     }
     #header h1 a {

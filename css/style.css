@@ -172,7 +172,7 @@ footer a{
 
 .ourAppH2 {
     text-align: center;
-    
+
 }
 
 footer {
@@ -231,8 +231,8 @@ footer {
 
 /*new*/
 @media (min-width: 568px){
-    
-    
+
+
     .hero-text3{
         text-align: center;
         position: sticky;
@@ -242,9 +242,9 @@ footer {
         right: 15%;
         color: white;
     }
-   
 
-    
+
+
 }
 @media (min-width: 1098px) and (min-height: 586px){
     .hero-text3{
@@ -374,7 +374,7 @@ footer {
         background-repeat: no-repeat;
         background-size: cover;
     }
-    
+
     .ourAppH2 {
         text-align: center;
         margin:auto;
@@ -384,7 +384,7 @@ footer {
         font-size: 25px;
         letter-spacing: 7px;
         width: 25%;
-        
+
     }
     #spH2{
         width:35%;
@@ -394,11 +394,11 @@ footer {
         padding-top:50px;
         height:250px;
     }
-    
-    #contact p{
+
+    .index-footer p{
         color:#f1faee;
     }
-    #contact a{
+    .index-footer a{
         color:#defffa;
     }
 }

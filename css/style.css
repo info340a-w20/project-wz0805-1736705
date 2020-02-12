@@ -15,7 +15,7 @@
 }
 
 main {
-    margin-top:5rem;
+    margin-top:3rem;
 }
 
 main a {
@@ -164,7 +164,7 @@ footer a{
 }
 
 
-.ourApp {
+.ourApp p{
     margin-left: 15%;
     margin-right: 15%;
     text-indent: 3%;
@@ -172,6 +172,7 @@ footer a{
 
 .ourAppH2 {
     text-align: center;
+    
 }
 
 footer {
@@ -358,6 +359,46 @@ footer {
         display: none;
     }
 
+    .parallax {
+        /* The image used */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)), url('../img/saved.jpg');
+        opacity: 0.95;
+        /* Set a specific height */
+        height: 400px;
+        margin-bottom:50px;
+        margin-top:50px;
+        padding-top:180px;
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     
+    .ourAppH2 {
+        text-align: center;
+        margin:auto;
+        background-color: #59564e;
+        color: #fff;
+        padding: 18px;
+        font-size: 25px;
+        letter-spacing: 7px;
+        width: 25%;
+        
+    }
+    #spH2{
+        width:35%;
+    }
+    #bottomp{
+        margin-bottom:0;
+        padding-top:50px;
+        height:250px;
+    }
     
+    #contact p{
+        color:#f1faee;
+    }
+    #contact a{
+        color:#defffa;
+    }
 }

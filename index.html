@@ -28,7 +28,6 @@
             <div class="drop-content">
                 <a href="index.html">Welcome</a>
                 <a href="community.html">Community</a>
-                <a href="saved.html">Saved Recipes</a>
                 <a href="#contact">Contact Us</a>
                 <a href="#">Login</a>
             </div>
@@ -40,8 +39,8 @@
             <div class="box">
                 <a class="button" href="#popup1" id="start">Get Started</a>
             </div>
-            
-            
+
+
             <!--new-->
         </div>
     </div>
@@ -51,7 +50,6 @@
             <ul>
                 <li class="current"><a href="index.html">Welcome</a></li>
                 <li><a href="community.html">Community</a></li>
-                <li><a href="saved.html">Saved Recipes</a></li>
                 <li><a href="#contact">Contact Us</a></li>
                 <li><a href="#">Login</a></li>
             </ul>
@@ -126,12 +124,12 @@
                                 </div>
                                 <div class="form-group col-md-12">
                                     <p>1. How much time approximately you have for cooking today?</p>
-                                    <input type="radio" id="15" name="time" value="15">
-                                    <label for="15">Under 15 Minutes</label><br>
                                     <input type="radio" id="30" name="time" value="30">
-                                    <label for="30">15 - 30 Minutes</label><br>
-                                    <input type="radio" id="30+" name="time" value="30+">
-                                    <label for="30+">Over 30 Minutes!</label>
+                                    <label for="30">Under 30 Minutes</label><br>
+                                    <input type="radio" id="60" name="time" value="60">
+                                    <label for="60">30 - 60 Minutes</label><br>
+                                    <input type="radio" id="60+" name="time" value="60+">
+                                    <label for="60+">Over 60 Minutes!</label>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -139,8 +137,8 @@
                                     <p>2. Want something healthy or sweet & relaxing?</p>
                                     <input type="radio" id="healthy" name="h/s" value="healthy">
                                     <label for="healthy">Healthy!</label><br>
-                                    <input type="radio" id="sweet" name="h/s" value="sweet">
-                                    <label for="sweet">Sweet & Relaxing!</label>
+                                    <input type="radio" id="dessert" name="h/s" value="dessert">
+                                    <label for="dessert">Sweet & Relaxing!</label>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -165,20 +163,19 @@
                                 <div class="form-group col-md-12">
                                     <p>5. Do you need somthing comfort food?</p>
                                     <input type="radio" id="comfort" name="comfort" value="comfort">
-                                    <label for="fruit">Yes</label>&nbsp;
+                                    <label for="comfort">Yes</label>&nbsp;
                                     <input type="radio" id="ncomfort" name="comfort" value="ncomfort">
-                                    <label for="meat">No</label>
+                                    <label for="ncomfort">No</label>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    
                                     <button role="submit" onclick="window.open('community.html'); window.close();" class="post-button btn btn-warning" id="postPage" >
                                         Done!
                                     </button>
                                 </div>
                             </div>
-                            
+
                         </form>
                     </div>
                 </div>
@@ -186,6 +183,6 @@
             </div>
         </div>
     </div>
-    <!--new-->
 </body>
+<script src="js/index.js"></script>
 </html>

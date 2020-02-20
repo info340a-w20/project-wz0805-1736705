@@ -9,7 +9,7 @@ d3.csv("data/file1.csv").then(function(data) {
     if(window.localStorage.getItem("allRecipe") == null) {
         window.localStorage.setItem("allRecipe", JSON.stringify(state.data));
     }
-    updatePage();
+    renderList();
 });
 
 
@@ -49,7 +49,6 @@ function renderItem(item, parent) {
     temp += "</span></div></div><div class='card-footer text-right text-muted'><p><small>" + ingreArr.length + 
     " ingredients</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>"
     + item.minutes + " minutes</small></p></div>";
-    //temp += "<div class='box'><a class='button' href='#popup1'>Let me Pop up</a></div><div id='popup1' class='overlay'><div class='popup'><h2>Here i am</h2><a class='close' href='#'>&times;</a><div class='content'>Thank to pop me out of that button, but now i'm done so you can close this window.</div></div></div></div></div>"
     parent.prepend(temp);
     temp = html;
 
@@ -76,41 +75,6 @@ function renderPop(item, parent) {
     var html = "<div id='popup" + item.name + "' class='overlay'><div class='popup' id='see'><h2>" + item.name.toUpperCase() + " (" + item.minutes + " mins)</h2><a class='close' href='#'>&times;</a>" +
         "<div class='content'>" + item.description + "<h3>Required Ingredients:</h3><p>" + item.ingredients + "</p><h3>Steps:</h3><p>" + item.steps + "</p></div></div></div>";
     parent.append(html);
-}
-// Track input state
-$("input").on("input", function() {
-    let id = $(this).attr("id");
-    state[id] = $(this).val();
-    updateButton();
-})
-// Event (push in data, update page)
-$("form").on("submit", function() {
-    event.preventDefault();
-    state.data.push({name:state.name, minutes:state.minutes, tags:state.tags, steps:state.steps, description:state.description, ingredients:state.ingredients, n_ingredients: ingreNum, n_tags: tagNum});
-    window.localStorage.setItem("allRecipe", JSON.stringify(state.data));
-    updatePage();
-})
-
-
-// Update page
-function updatePage() {
-    // Clear values
-    $("input").val("");
-    state.name = '';
-    state.minutes = '';
-    state.tags = '';
-    state.steps = '';
-    state.description = '';
-    state.ingredients = '';
-    state.n_tags = '';
-    renderList();
-    updateButton();
-}
-
-// Toggle button class
-function updateButton() {
-    let disable = state.input == "" | state.name == "" | state.minutes == "" | state.tags == "" | state.ingredients == "" ? true : false;
-    $("#postPage").attr("disabled", disable);
 }
 
 //add time filter
@@ -145,7 +109,7 @@ function removeRecipe(title){
     if(i!==-1){
       state.data.splice(i,1);
       localStorage.setItem('allRecipe', JSON.stringify(state.data));
-      updatePage();
+      renderList();
     }
 }
 

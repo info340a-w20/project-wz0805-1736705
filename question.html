@@ -29,53 +29,86 @@
                 <a href="#">Login</a>
             </div>
         </div>
-        <div class="hero-text3">
-            <h1 class="display-lg">Make your post</h1>
+
+        <div id="popup1" class="overlay">
+            <div class="popup" id="see">
+                <a class="close" href="#">&times;</a>
+                <div class="content2">
+                    <div class="container">
+                        <div class="row">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-text3" id="questionText">
             <div class="container">
                 <div class="row">
                     <div>
                         <form action="" method="POST">
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="name" class="title-text require">Title <span class="require">*</span></label>
-                                    <input id="name" type="text" class="form-control" name="name" placeholder="Name of your recipe"/>
+                                    <fieldset>
+                                        <legend>1. How much time approximately you have for cooking today?</legend>
+                                        <input type="radio" id="30" name="time" value="30">
+                                        <label for="30">Under 30 Minutes</label><br>
+                                        <input type="radio" id="60" name="time" value="60">
+                                        <label for="60">30 - 60 Minutes</label><br>
+                                        <input type="radio" id="60+" name="time" value="1000000000000">
+                                        <label for="60+">Over 60 Minutes!</label>
+                                    </fieldset>
+
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="description" class="title-text require">Description</label>
-                                    <input id="description" class="form-control" name="description" placeholder="Give your recipe a introduction"/>
+                                    <fieldset>
+                                        <legend>2. Want something healthy or sweet &amp; relaxing?</legend>
+                                        <input type="radio" id="healthy" name="typeHealthy" value="healthy">
+                                        <label for="healthy">Healthy!</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" id="dessert" name="typeHealthy" value="dessert">
+                                        <label for="dessert">Sweet &amp; Relaxing!</label>
+                                    </fieldset>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="ingredients" class="title-text require">Ingredients <span class="require">*</span></label>
-                                    <input id="ingredients" class="form-control" name="ingredients" placeholder="Ingredients of your recipe"/>
+                                    <fieldset>
+                                        <legend>3. Do you have abundant ingredients or have less for preparation?</legend>
+                                        <input type="radio" id="ingremore" name="ingre" value="1000000000000">
+                                        <label for="ingremore">Yes!</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" id="ingreless" name="ingre" value="7">
+                                        <label for="ingreless">Not a lot..</label>
+                                    </fieldset>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="steps" class="title-text require">Steps</label>
-                                    <input id="steps" class="form-control" name="steps" placeholder="How do you make it"/>
+                                    <fieldset>
+                                        <legend>4. Do you like fruity or meaty?</legend>
+                                        <input type="radio" id="fruit" name="typeFruity" value="fruit">
+                                        <label for="fruit">Fruit</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" id="meat" name="typeFruity" value="meat">
+                                        <label for="meat">Meat</label>
+                                    </fieldset>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="tags" class="title-text">Tags <span class="require">*</span><small>&nbsp;&nbsp;(Seperate by comma)</small></label>
-                                    <i class="fas fa-search" aria-hidden="true"></i>
-                                    <input id="tags" class="form-control" type="text" placeholder="Search Tags"/>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="minutes" class="title-text">Time Needed <span class="require">*</span><small>&nbsp;&nbsp;(Minutes)</small></label>
-                                    <input id="minutes" class="form-control" type="number" placeholder="Estimate time"/>
+                                <div class="form-group col-md-12">
+                                    <fieldset>
+                                        <legend>5. Do you need somthing comfort food?</legend>
+                                        <input type="radio" id="comfort" name="comfort" value="comfort">
+                                        <label for="comfort">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" id="course" name="comfort" value="course">
+                                        <label for="course">No</label>
+                                    </fieldset>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <button role="submit" onclick="location.href='community.html';" class="post-button btn btn-warning" id="postPage" >
-                                        Create
+                                        Done
                                     </button>
-                                    <a href="community.html" class="post-button btn btn-light">Cancel</a>
                                 </div>
                             </div>
                         </form>
@@ -88,13 +121,13 @@
         <h1 id="logo">Mood Recipes</h1>
         <nav id="nav">
             <ul>
-                <li><a href="index.html">Welcome</a></li>
-                <li class="current"><a href="community.html">Community</a></li>
+                <li class="current"><a href="index.html">Welcome</a></li>
+                <li><a href="community.html">Community</a></li>
                 <li><a href="community.html#contact">Contact Us</a></li>
                 <li><a href="#">Login</a></li>
             </ul>
         </nav>
     </header>
 </body>
-<script src="js/post.js"></script>
+<script src="js/index.js"></script>
 </html>

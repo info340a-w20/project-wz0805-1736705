@@ -24,6 +24,7 @@ $("input").on("input", function() {
 // Event (push in data, update page)
 $("form").on("submit", function() {
     event.preventDefault();
+    window.localStorage.removeItem("moodRecipe");
     state.data.push({name:state.name, minutes:state.minutes, tags:state.tags, steps:state.steps, description:state.description, ingredients:state.ingredients});
     window.localStorage.setItem("allRecipe", JSON.stringify(state.data));
     updatePage();

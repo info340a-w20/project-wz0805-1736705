@@ -3,40 +3,56 @@
 let state = {};
 var tagNum = 0;
 var ingreNum = 0;
+
 // Load data
 d3.csv("data/file1.csv").then(function(data) {
     state.data = data;
-    if(window.localStorage.getItem("allRecipe") == null) {
+    if (window.localStorage.getItem("allRecipe") == null) {
         window.localStorage.setItem("allRecipe", JSON.stringify(state.data));
     }
     if (window.localStorage.getItem("moodRecipe") == null) {
         renderList("allRecipe");
+    } else if (window.localStorage.getItem("moodRecipe").length < 3) {
+        $("#showRecipes").append("<div style='margin-left:auto;margin-right:auto;" +
+        "text-align:center;width:100%;margin-bottom:50px;'><button onclick='showAll()'>Show " + 
+        "all recipes</button></div><div style='margin-left:auto;margin-right:auto;text-align:center;width:50%'>" + 
+        "<b style='font-size: 30px;'>Your answers do not match any recipes</b><br>" + 
+        "<a href='index.html' style='font-size: 20px;'>Try Again</a></div>");
     } else {
+        $("#showRecipes").prepend("<div style='margin-left:auto;margin-right:auto;" +
+        "text-align:center;width:100%;margin-bottom:50px;'><button onclick='showAll()'>Show " + 
+        "all recipes</button></div>");
         renderList("moodRecipe");
     }
 });
-
-
-
+function showAll() {
+    window.localStorage.removeItem("moodRecipe");
+    $("#showRecipes").html("");
+    renderList("allRecipe");
+}
 
 // Function to render an item
 function renderItem(item, parent) {
     var html = "<div class='col-sm-12 col-md-6 col-lg-4'><div class='card mb-4 box-shadow'><div class='card-body'>";
     var temp = html;
-    temp += "<h2 class = 'card-title'>" + item.name + "</h2><p class='card-text'>";
-    let intro = item.description.substring(0,100);
+    temp += "<h2 class = 'card-title'>" + "<a class='button' href='#popup" + item.name +"'>" + item.name + "</a></h2><p class='card-text'>";
+    let intro = "<a class='button' href='#popup" + item.name +"'>";
+    if (item.description == "") {
+        intro += "( No Description )";
+    } else {
+        intro += item.description.substring(0,100);
+    }
     if (intro != "" && intro.length == 100) {
         temp += intro + "...";
     } else if (intro != "") {
         temp += intro;
     }
-    temp += "<div class='box'>" + 
-    "<a class='button' href=" + "'#popup" + item.name +"'>More Details...</a></div>";
+    temp += "</a>";
     temp += "</p><div class='d-flex justify-content-between'><span class='type-span'>";
     let tag = item.tags;
     let tagArr = tag.split(",");
     tagNum = tagArr.length;
-    item.n_tags = tagNum;
+    item.numTags = tagNum;
     if(tagArr.length > 3) {
         for (let k = 3; k < tagArr.length; k+= 3) {
             temp += "<mark>" + tagArr[k] + "</mark>  ";
@@ -49,9 +65,12 @@ function renderItem(item, parent) {
     let ingre = item.ingredients;
     let ingreArr = ingre.split(",")
     ingreNum = ingreArr.length;
-    item.n_ingredients = ingreNum;
+    item.numIngredients = ingreNum;
+    if (parseInt(item.minutes) > 999) {
+        item.minutes = 999;
+    }
     temp += "</span></div></div><div class='card-footer text-right text-muted'><p><small>" + ingreArr.length + 
-    " ingredients</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>"
+    " ingredients</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>"
     + item.minutes + " minutes</small></p></div>";
     parent.prepend(temp);
     temp = html;
@@ -72,7 +91,7 @@ function renderList(storage) {
     state.data = tempArr;
     state.data.map(function(d){
         renderItem(d, $('#recipeList'));
-        renderPop(d, $('#recipeList'))
+        renderPop(d, $('#recipeList'));
     })
 }
 function renderPop(item, parent) {
@@ -87,36 +106,37 @@ document.getElementById('time').addEventListener('click', function() {
     state.data = state.data.sort((a, b) => b.minutes - a.minutes);
     $("#recipeList").empty();
     state.data.map(function(d){
-        renderItem(d, $('#recipeList'))
+        renderItem(d, $('#recipeList'));
+        renderPop(d, $('#recipeList'));
     })
 }, false);
 
 //add ingredient filter
 document.getElementById('ingre').addEventListener('click', function() {   
-    state.data = state.data.sort((a, b) => b.n_ingredients - a.n_ingredients);
+    state.data = state.data.sort((a, b) => b.numIngredients - a.numIngredients);
     $("#recipeList").empty();
     state.data.map(function(d){
-        renderItem(d, $('#recipeList'))
+        renderItem(d, $('#recipeList'));
+        renderPop(d, $('#recipeList'));
     })
 }, false);
 
 //add tag filter
 document.getElementById('tag').addEventListener('click', function() {   
-    state.data = state.data.sort((a, b) => b.n_tags - a.n_tags);
+    state.data = state.data.sort((a, b) => b.numTags - a.numTags);
     $("#recipeList").empty();
     state.data.map(function(d){
-        renderItem(d, $('#recipeList'))
+        renderItem(d, $('#recipeList'));
+        renderPop(d, $('#recipeList'));
     })
 }, false);
 
-function removeRecipe(title){
+// Function for removing recipes from local storage
+/*function removeRecipe(title){
     var i=state.data.findIndex(dish=>dish.name==title);
     if(i!==-1){
       state.data.splice(i,1);
       localStorage.setItem('allRecipe', JSON.stringify(state.data));
       renderList("allRecipe");
     }
-}
-
-
-//JSON.parse(localStorage.getItem('myMovie')||"[]")
+}*/

@@ -13,6 +13,7 @@ d3.csv("data/file1.csv").then(function(data) {
 $("input").on("input", function() {
     let id = $(this).attr("name");
     state[id] = $(this).val();
+    console.log(state);
     updateButton();
 })
   
@@ -21,14 +22,16 @@ $("form").on("submit", function() {
     event.preventDefault();
     var temp = [];
     state.data.map(function(d){
-        if((d.minutes < state[time]) && (d.tags.includes(state[typeHealthy]))
-         && (d.n_ingredients < state[ingre]) && (d.tags.includes(state[typeFruity]))
-         && (d.tags.includes(state[comfort]))){
+        if ((parseInt(d.minutes, 10) < parseInt(state.time,10)) && (d.tags.includes(state.typeHealthy)) && 
+        (parseInt(d.n_ingredients, 10) < parseInt(state.ingre, 10)) && (d.tags.includes(state.typeFruity)) && 
+        (d.tags.includes(state.comfort))) {
+            console.log(d);
             temp.push(d);
         }
     })
     window.localStorage.setItem("moodRecipe", JSON.stringify(temp));
-}, false);
+    updatePage();
+});
  
 // Update page
 function updatePage() {

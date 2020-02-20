@@ -11,6 +11,10 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
 <body id="homebody">
@@ -32,7 +36,13 @@
         <div class="hero-text">
             <h1>Some hints for what to cook? </h1>
             <p>Here are several questions can help you decide</p>
-            <button type="button" class="btn btn-light btn-lg">Get Started</button>
+            <!----<button type="button" class="btn btn-light btn-lg">Get Started</button>-->
+            <div class="box">
+                <a class="button" href="#popup1" id="start">Get Started</a>
+            </div>
+            
+            
+            <!--new-->
         </div>
     </div>
     <header id="header" class="alt">
@@ -102,5 +112,80 @@
             <p>&copy; 2020 Zhan Wu and Nina Zhang.</p>
         </footer>
     </div>
+    <!--new-->
+    <div id="popup1" class="overlay">
+        <div class="popup" id="see">
+            <a class="close" href="#">&times;</a>
+            <div class="content2">
+                <div class="container">
+                    <div class="row">
+                        <form action="" method="POST">
+                            <div class="form-row" id="starq">
+                                <div class="form-group col-md-12">
+                                    <h2>Mood Recipe Questions</h2>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <p>1. How much time approximately you have for cooking today?</p>
+                                    <input type="radio" id="15" name="time" value="15">
+                                    <label for="15">Under 15 Minutes</label><br>
+                                    <input type="radio" id="30" name="time" value="30">
+                                    <label for="30">15 - 30 Minutes</label><br>
+                                    <input type="radio" id="30+" name="time" value="30+">
+                                    <label for="30+">Over 30 Minutes!</label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <p>2. Want something healthy or sweet & relaxing?</p>
+                                    <input type="radio" id="healthy" name="h/s" value="healthy">
+                                    <label for="healthy">Healthy!</label><br>
+                                    <input type="radio" id="sweet" name="h/s" value="sweet">
+                                    <label for="sweet">Sweet & Relaxing!</label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <p>3. Do you have abundant ingredients or have less for preparation?</p>
+                                    <input type="radio" id="inremore" name="ingre" value="ingremore">
+                                    <label for="ingremore">Yes!</label><br>
+                                    <input type="radio" id="ingreless" name="ingre" value="ingreless">
+                                    <label for="ingreless">Not a lot..</label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <p>4. Do you like fruity or meaty?</p>
+                                    <input type="radio" id="fruit" name="f/m" value="fruit">
+                                    <label for="fruit">Fruit</label><br>
+                                    <input type="radio" id="meat" name="f/m" value="meat">
+                                    <label for="meat">Meat</label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <p>5. Do you need somthing comfort food?</p>
+                                    <input type="radio" id="comfort" name="comfort" value="comfort">
+                                    <label for="fruit">Yes</label>&nbsp;
+                                    <input type="radio" id="ncomfort" name="comfort" value="ncomfort">
+                                    <label for="meat">No</label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    
+                                    <button role="submit" onclick="window.open('community.html'); window.close();" class="post-button btn btn-warning" id="postPage" >
+                                        Done!
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--new-->
 </body>
 </html>

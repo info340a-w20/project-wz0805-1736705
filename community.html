@@ -10,7 +10,10 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
 <body id="homebody">
@@ -32,13 +35,15 @@
             <h1>Communities</h1>
             <p>Share and post in our community!</p>
             <div class="container" id="filter">
-                <p>Filter:
-                    <a href="#" class="btn btn-light my-1">Time</a>
-                    <a href="#" class="btn btn-light my-1">Ingredients</a>
-                    <a href="#" class="btn btn-light my-1">Tag</a>
+                <p>Order By:
+                    <a href="#" class="btn btn-light my-1" id="time">Time</a>
+                    <a href="#" class="btn btn-light my-1" id="ingre">Ingredients</a>
+                    <a href="#" class="btn btn-light my-1" id="tag">Tag</a>
                 </p>
                 <p>
-                    <a href="post.html" class="btn btn-warning">Post Your Own</a>
+                    <div class="box">
+                        <a class="button" href="post.html" id="start">Post Your Own</a>
+                    </div>
                 </p>
             </div>
         </div>
@@ -58,19 +63,25 @@
     <main>
         <div class="album py-5" id="communitymain">
             <div class="container">
-                <div class="row">
+                <div class="row" id="recipeList">
+                    <!-----
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="card mb-4 box-shadow">
-                            <img src="img/scrambled.jpg" class="image-fluid" alt="scrambled egg">
                             <div class="card-body">
-                                <p class="card-text">Breakfast scrambled egg with bun and chives</p>
+                                <h2 class="card-title">cheesy shells with chicken</h2>
+                                <p class="card-text">creamy cheesy delicious...cooked turkey or ham can be replaced for the chicken.</p>
                                 <div class="d-flex justify-content-between">
                                     <span class="type-span"><mark>Quick</mark>  <mark>Breakfast</mark></span>
                                 </div>
                             </div>
                             <div class="card-footer text-right text-muted">
-                                <p><small>Ella Lin</small></p>
+                                <div class="box">
+                                    <a class="button" href="#popup3">Let me Pop up</a>
+                                </div>
+                                
+                            <p><small>Ella Lin</small></p>
                             </div>
+                            
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4">
@@ -83,6 +94,10 @@
                                 </div>
                             </div>
                             <div class="card-footer text-right text-muted">
+                                <div class="box">
+                                    <a class="button" href="#popup2">Let me Pop up</a>
+                                </div>
+                                
                                 <p><small>Eva Krueger</small></p>
                             </div>
                         </div>
@@ -97,7 +112,38 @@
                                 </div>
                             </div>
                             <div class="card-footer text-right text-muted">
+                                <div class="box">
+                                    <a class="button" href="#popup1">Let me Pop up</a>
+                                </div>
+                                
+                                <div id="popup1" class="overlay">
+                                    <div class="popup" id="see">
+                                        <h2>Here i am</h2>
+                                        <a class="close" href="#">&times;</a>
+                                        <div class="content">
+                                            Thank to pop me out of that button, but now i'm done so you can close this window.
+                                        </div>
+                                    </div>
+                                </div>
                                 <p><small>Ross Tanner</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="popup2" class="overlay">
+                        <div class="popup" id="see">
+                            <h2>Here i were</h2>
+                            <a class="close" href="#">&times;</a>
+                            <div class="content">
+                                Thank to pop me out of that button, but now i'm done so you can close this window.
+                            </div>
+                        </div>
+                    </div>
+                    <div id="popup3" class="overlay">
+                        <div class="popup" id="see">
+                            <h2>Here you were</h2>
+                            <a class="close" href="#">&times;</a>
+                            <div class="content">
+                                Thank to pop me out of that button, but now i'm done so you can close this window.
                             </div>
                         </div>
                     </div>
@@ -186,11 +232,11 @@
                                 <p><small>Maya Hull</small></p>
                             </div>
                         </div>
-                    </div>
+                    </div>--->
                 </div>
             </div>
         </div>
-
+    
     </main>
     <footer id="contact">
         <p>This page is a cooperative course work created by Nina Zhang and Zhan Wu as an initial static version of this web app.</p>
@@ -200,4 +246,5 @@
         <p>&copy; 2020 Zhan Wu and Nina Zhang.</p>
     </footer>
 </body>
+<script src="js/community.js"></script>
 </html>

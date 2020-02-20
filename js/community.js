@@ -9,7 +9,11 @@ d3.csv("data/file1.csv").then(function(data) {
     if(window.localStorage.getItem("allRecipe") == null) {
         window.localStorage.setItem("allRecipe", JSON.stringify(state.data));
     }
-    renderList();
+    if (window.localStorage.getItem("moodRecipe") == null) {
+        renderList("allRecipe");
+    } else {
+        renderList("moodRecipe");
+    }
 });
 
 
@@ -54,9 +58,9 @@ function renderItem(item, parent) {
 
 }
 // Function to render list of items
-function renderList() {
+function renderList(storage) {
     $("#recipeList").empty();
-    var stringCurr = window.localStorage.getItem("allRecipe");
+    var stringCurr = window.localStorage.getItem(storage);
     var stringArr = stringCurr.substring(1, stringCurr.length - 1).split("},");
     for (let i = 0; i < stringArr.length - 1; i++) {
         stringArr[i] += "}";
@@ -72,8 +76,9 @@ function renderList() {
     })
 }
 function renderPop(item, parent) {
-    var html = "<div id='popup" + item.name + "' class='overlay'><div class='popup' id='see'><h2>" + item.name.toUpperCase() + " (" + item.minutes + " mins)</h2><a class='close' href='#'>&times;</a>" +
-        "<div class='content'>" + item.description + "<h3>Required Ingredients:</h3><p>" + item.ingredients + "</p><h3>Steps:</h3><p>" + item.steps + "</p></div></div></div>";
+    var html = "<div id='popup" + item.name + "' class='overlay'><div class='popup' id='see'><h2>" + item.name.toUpperCase() + 
+    " (" + item.minutes + " mins)</h2><a class='close' href='#'>&times;</a>" + "<div class='content'>" + item.description + 
+    "<h3>Required Ingredients:</h3><p>" + item.ingredients + "</p><h3>Steps:</h3><p>" + item.steps + "</p></div></div></div>";
     parent.append(html);
 }
 
@@ -109,7 +114,7 @@ function removeRecipe(title){
     if(i!==-1){
       state.data.splice(i,1);
       localStorage.setItem('allRecipe', JSON.stringify(state.data));
-      renderList();
+      renderList("allRecipe");
     }
 }
 

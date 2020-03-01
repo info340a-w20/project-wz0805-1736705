@@ -111,7 +111,7 @@ document.getElementById('time').addEventListener('click', function() {
     })
 }, false);
 
-//add ingredient filter
+/*add ingredient filter
 document.getElementById('ingre').addEventListener('click', function() {   
     state.data = state.data.sort((a, b) => b.numIngredients - a.numIngredients);
     $("#recipeList").empty();
@@ -129,7 +129,7 @@ document.getElementById('tag').addEventListener('click', function() {
         renderItem(d, $('#recipeList'));
         renderPop(d, $('#recipeList'));
     })
-}, false);
+}, false);*/
 
 // Function for removing recipes from local storage
 /*function removeRecipe(title){

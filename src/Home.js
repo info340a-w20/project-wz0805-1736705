@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import Community from "./Community";
-import Question from "./Question";
-import Post from "./Post";
-import Login, {fakeAuth} from "./Login";
 import { HashLink as Link } from 'react-router-hash-link';
 
-
 class Home extends Component {
+  
   render() {
+
     return (
       <>
         <div className="hero-image">
@@ -17,18 +14,17 @@ class Home extends Component {
                   <i className="fa fa-caret-down"></i>
               </button>
               <div className="drop-content">
-                  <Link to='/#homebody'>Welcome</Link>
+                  <Link to="/#homebody">Welcome</Link>
                   <Link to="/Community#homebody">Community</Link>
-                  <Link to="/#contact">Contact Us</Link>
+                  <Link to="/ContactUs#homebody">Contact Us</Link>
                   <Link to="/Login">Login</Link>
-                  
               </div>
           </div>
           <div className="hero-text">
             <h1>Some hints for what to cook? </h1>
             <p>Here are several questions can help you decide</p>
             <div className="box">
-                <a className="button" href="question.html" id="start">Get Started</a>
+                <Link className="button" to="/Question" id="start">Get Started</Link>
             </div>
             <br/>
             <p>Scroll Down &darr; for More Information About Us</p>
@@ -38,7 +34,7 @@ class Home extends Component {
           <h1 id="logo">Mood Recipes</h1>
           <nav id="nav">
               <ul>
-                  <li className="current"><b>Welcome</b></li>
+                  <li className="current"><Link to="/#homebody">Welcome</Link></li>
                   <li><Link to="/Community#homebody">Community</Link></li>
                   <li><Link to="/#contact">Contact Us</Link></li>
                   <li><Link to="/Login">Login</Link></li>
@@ -92,15 +88,14 @@ class Home extends Component {
         </section>
     </main>
     <div className="parallax" id="bottomp">
-    <footer className="index-footer" id="contact">
-        <p>This page is a cooperative course work created by Xiying Zhang and Zhan Wu as an initial static version of this web app.</p>
-        <address><p>
-            Contact us at <a href="mailto:xz67@uw.edu">xz67@uw.edu</a>, or at <a href="mailto:alex.zhan.wu@icloud.com">alex.zhan.wu@icloud.com</a>.
-        </p></address>
-        <p>&copy; 2020 Zhan Wu and Xiying Zhang.</p>
-    </footer>
+        <footer className="index-footer" id="contact">
+            <p>This page is a cooperative course work created by Nina Zhang and Zhan Wu as an initial static version of this web app.</p>
+            <address><p>
+                Contact us at <a href="mailto:xz67@uw.edu">xz67@uw.edu</a>, or at <a href="mailto:alex.zhan.wu@icloud.com">alex.zhan.wu@icloud.com</a>.
+            </p></address>
+            <p>&copy; 2020 Zhan Wu and Nina Zhang.</p>
+        </footer>
     </div>
-    
   
     </>
     );

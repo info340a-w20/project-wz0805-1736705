@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Redirect, Link, Route, Switch } from "react-router-dom";
 import Community from "./Community";
-import ContactUs from "./ContactUs";
 import Question from "./Question";
 import Post from "./Post";
 import Login, {fakeAuth} from "./Login";
+import { HashLink as Link } from 'react-router-hash-link';
 
 
 class Home extends Component {
@@ -18,9 +17,9 @@ class Home extends Component {
                   <i className="fa fa-caret-down"></i>
               </button>
               <div className="drop-content">
-                  <Link to="/">Welcome</Link>
-                  <Link to="/Community">Community</Link>
-                  <Link to="/ContactUs">Contact Us</Link>
+                  <Link to='/#homebody'>Welcome</Link>
+                  <Link to="/Community#homebody">Community</Link>
+                  <Link to="/#contact">Contact Us</Link>
                   <Link to="/Login">Login</Link>
                   
               </div>
@@ -39,9 +38,9 @@ class Home extends Component {
           <h1 id="logo">Mood Recipes</h1>
           <nav id="nav">
               <ul>
-                  <li className="current"><Link to="/">Welcome</Link></li>
-                  <li><Link to="/Community">Community</Link></li>
-                  <li><Link to="/ContactUs">Contact Us</Link></li>
+                  <li className="current"><b>Welcome</b></li>
+                  <li><Link to="/Community#homebody">Community</Link></li>
+                  <li><Link to="/#contact">Contact Us</Link></li>
                   <li><Link to="/Login">Login</Link></li>
               </ul>
           </nav>
@@ -93,14 +92,15 @@ class Home extends Component {
         </section>
     </main>
     <div className="parallax" id="bottomp">
-        <footer className="index-footer" id="contact">
-            <p>This page is a cooperative course work created by Nina Zhang and Zhan Wu as an initial static version of this web app.</p>
-            <address><p>
-                Contact us at <a href="mailto:xz67@uw.edu">xz67@uw.edu</a>, or at <a href="mailto:alex.zhan.wu@icloud.com">alex.zhan.wu@icloud.com</a>.
-            </p></address>
-            <p>&copy; 2020 Zhan Wu and Nina Zhang.</p>
-        </footer>
+    <footer className="index-footer" id="contact">
+        <p>This page is a cooperative course work created by Xiying Zhang and Zhan Wu as an initial static version of this web app.</p>
+        <address><p>
+            Contact us at <a href="mailto:xz67@uw.edu">xz67@uw.edu</a>, or at <a href="mailto:alex.zhan.wu@icloud.com">alex.zhan.wu@icloud.com</a>.
+        </p></address>
+        <p>&copy; 2020 Zhan Wu and Xiying Zhang.</p>
+    </footer>
     </div>
+    
   
     </>
     );

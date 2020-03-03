@@ -310,8 +310,24 @@ footer {
     max-height: 90%;
     overflow: auto;
 }
-@media (min-width: 568px){
 
+.parallax2 {
+    /* The image used */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)), url('imgs/background.jpg');
+    opacity: 0.95;
+    /* Set a specific height */
+    height: 900px;
+    margin-bottom:0px;
+    margin-top:0;
+    padding-top:0;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+@media (min-width: 568px){
 
     .hero-text3{
         text-align: center;
@@ -471,7 +487,7 @@ footer {
         background-repeat: no-repeat;
         background-size: cover;
     }
-
+    
     .ourAppH2 {
         text-align: center;
         margin:auto;

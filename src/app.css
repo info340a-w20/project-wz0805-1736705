@@ -290,6 +290,12 @@ footer {
     background-size: cover;
 }
 
+.popup .content2 {
+    margin-top: 20px;
+    max-height: 90%;
+    overflow: auto;
+}
+
 @media (min-width: 568px){
 
 

@@ -5,7 +5,7 @@ import Home from "./Home";
 import Question from "./Question";
 import Post from "./Post";
 import * as d3 from "d3";
-import data from "./file1.csv";
+import data from "./data/file1.csv";
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class App extends Component {
     });
   }
   
-  render() {  
+  render() { 
     return (
         <Switch>
             <Route exact path='/'>
@@ -33,13 +33,19 @@ class App extends Component {
               <Community data={this.state.data} />
             </Route>
             <Route path="/Question">
-              <Question data={this.state.data} />
+              <Question data={this.state.data} onUpdate={this.handleChange.bind(this)} />
             </Route>
             <Route path="/Post">
               <Post data={this.state.data} />
             </Route>
         </Switch>
   )};
+
+  handleChange = (key, value) => {
+    var obj = {};
+    obj[key] = value;
+    this.setState(obj);
 }
-  
+}
+
 export default App;

@@ -4,21 +4,21 @@ import Popup from "reactjs-popup";
  
 export class Recipes extends Component {
     render() {
-        var html = "<div class='card-body'>";
+        var html = "<div className='card-body'>";
         var temp = html;
-        temp += "<h2 class = 'card-title'>" + this.props.data.name + "</h2><p class='card-text'>";
+        temp += "<h2 class = 'card-title'>" + this.props.data.name + "</h2><p className='card-text'>";
         let intro = "";
-        if (this.props.data.description == "") {
+        if (this.props.data.description === "") {
             intro += "( No Description )";
         } else {
             intro += this.props.data.description.substring(0,100);
         }
         if (this.props.data.description.length > 100) {
             temp += intro + "...";
-        } else if (intro != "") {
+        } else if (intro !== "") {
             temp += intro;
         }
-        temp += "</p><div class='d-flex justify-content-between'><span class='type-span'>";
+        temp += "</p><div className='d-flex justify-content-between'><span className='type-span'>";
         let tag = this.props.data.tags;
         let tagArr = tag.split(",");
         let tagNum = tagArr.length;
@@ -39,12 +39,12 @@ export class Recipes extends Component {
         if (parseInt(this.props.data.minutes) > 999) {
             this.props.data.minutes = 999;
         }
-        temp += "</span></div></div><div class='card-footer text-left text-muted'><p><small>" + ingreArr.length +
+        temp += "</span></div></div><div className='card-footer text-left text-muted'><p><small>" + ingreArr.length +
         " ingredients</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>"
         + this.props.data.minutes + " minutes</small></p>";
         temp = parse(temp);
         return(
-            <div className='col-sm-12 col-md-6 col-lg-4'><div class='card mb-4 box-shadow'>{temp}{Recipespop(this.props.data)}</div></div>
+            <div className='col-sm-12 col-md-6 col-lg-4'><div className='card mb-4 box-shadow'>{temp}{Recipespop(this.props.data)}</div></div>
         )
    }
 

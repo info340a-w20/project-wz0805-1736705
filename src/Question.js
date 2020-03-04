@@ -2,7 +2,15 @@ import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 
 class Question extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: this.props.data
+        }
+    }
+
     render() {
+        console.log(this.state); 
         return (
             <div className="parallax2">
                 <div>
@@ -16,17 +24,6 @@ class Question extends Component {
                             <Link to="/Community#homebody">Community</Link>
                             <Link to="/#contact">Contact Us</Link>
                             <Link to="/Login">Login</Link>
-                        </div>
-                    </div>
-                    <div id="popup1" className="overlay">
-                        <div className="popup" id="see">
-                            <a className="close" href="#">&times;</a>
-                            <div className="content2">
-                                <div className="container">
-                                    <div className="row">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div className="hero-text3" id="questionText">

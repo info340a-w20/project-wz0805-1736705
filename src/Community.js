@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
-import { Recipes } from "./Recipes";
-import Login, {fakeAuth} from "./Login";
-import Home from "./Home"
-import * as d3 from "d3";
+import Recipes from "./Recipes";
+import Question from "./Question";
+import Scrollchor from 'react-scrollchor';
 
 
 class Community extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { data: this.props.data};
+        
+        console.log(this.state);
+    }
+
     render() {
       return (
         <>
@@ -28,14 +34,14 @@ class Community extends Component {
             <h1>Communities</h1>
             <p>Share and post in our community!</p>
             <div className="container" id="filter">
-                <p>Order By: 
+                <p>Order By:&nbsp;&nbsp;&nbsp;
                     <a href="#" className="btn btn-light my-1" id="time">Time</a>
                 </p>
                 <div className="box">
                     <Link to="/Post" className="button" id="start">Post Your Own</Link>
                 </div>
                 <br/>
-                <p>Scroll Down &darr; for Recipes</p>
+                <p><Scrollchor to="#communitymain">Click Here</Scrollchor> for Recipes</p>
             </div>
         </div>
         </div>

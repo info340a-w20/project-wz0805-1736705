@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import parse from 'html-react-parser';
 import Popup from "reactjs-popup";
- 
+
 export class Recipes extends Component {
     render() {
         var html = "<div class='card-body'>";
@@ -56,7 +56,7 @@ function Recipespop(data) {
         closeOnDocumentClick>
             <div id="see" className="popup">
                 <div>
-                    
+
                     <div className="content">
                         <h2>{data.name.toUpperCase()} ({data.minutes}mins)</h2>
                         {data.description}

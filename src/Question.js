@@ -7,7 +7,7 @@ import LinkButton from './LinkButton';
 //Question2: link to Community page when click Done
 
 class Question extends Component {
-    
+
     constructor(props) {
         super(props);
         this.state = {
@@ -158,8 +158,8 @@ class Question extends Component {
         event.preventDefault();
         var temp = [];
         this.state.data.map((d) => {
-            if ((parseInt(d.minutes, 10) < parseInt(this.state.time,10)) && (d.tags.includes(this.state.typeHealthy)) && 
-            (parseInt(d.n_ingredients, 10) < parseInt(this.state.ingre, 10)) && (d.tags.includes(this.state.typeFruity)) && 
+            if ((parseInt(d.minutes, 10) < parseInt(this.state.time,10)) && (d.tags.includes(this.state.typeHealthy)) &&
+            (parseInt(d.n_ingredients, 10) < parseInt(this.state.ingre, 10)) && (d.tags.includes(this.state.typeFruity)) &&
             (d.tags.includes(this.state.comfort))) {
                 return temp.push(d);
             }

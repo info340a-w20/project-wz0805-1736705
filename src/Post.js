@@ -139,11 +139,13 @@ class Post extends Component {
             return temp.push(d);
         })
         var newId = temp.length;
-        temp.push({id: newId, name: this.state.name, description: this.state.description, ingredients: this.state.ingredients,
+        var arr = [];
+        arr.push({id: newId, name: this.state.name, description: this.state.description, ingredients: this.state.ingredients,
             steps: this.state.steps, tags: this.state.tags, minutes: this.state.minutes});
+        arr.push(...temp);
         console.log(temp);
         let obj = {};
-        obj["data"] = temp;
+        obj["data"] = arr;
         console.log(obj);
         this.setState(obj);
 

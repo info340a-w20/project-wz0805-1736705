@@ -33,7 +33,8 @@ class Community extends Component {
             <p>Share and post in our community!</p>
             <div className="container" id="filter">
                 <p>Order By:&nbsp;&nbsp;&nbsp;
-                    <button className="button btn btn-warning"  onClick={() =>this.props.handleSort()}>Time</button>
+                    <button className="button btn btn-warning"  onClick={() =>this.props.handleSort()}>Least Time</button>&nbsp;&nbsp;&nbsp;
+                    <button className="button btn btn-warning"  onClick={() =>this.props.handleShow()}>Latest Upload</button>
                 </p>
                 <div className="box">
                     <Link to="/Post" className="button" id="start">Post Your Own</Link>
@@ -58,8 +59,7 @@ class Community extends Component {
             <div className="album py-5" id="communitymain">
                 <div className="container">
                     <div className="row" id="showRecipes">
-                    <div style={{marginLeft:'auto', marginRight:'auto',textAlign:'center',width:'100%',marginBottom:'50px'}}>
-                        <Link to="/Community"  className="btn btn-warning" onClick={() =>this.props.handleShow()}> Show all recipes</Link></div>
+                    
                     </div>
                     <div className="row" id="recipeList">
                         { this.props.data.map(function(d, i) {

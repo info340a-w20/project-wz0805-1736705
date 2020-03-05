@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
+import Scrollchor from 'react-scrollchor';
 
 class Home extends Component {
-  
   render() {
-
     return (
       <>
         <div className="hero-image">
@@ -27,7 +26,7 @@ class Home extends Component {
                 <Link className="button" to="/Question" id="start">Get Started</Link>
             </div>
             <br/>
-            <p>Scroll Down &darr; for More Information About Us</p>
+            <p><Scrollchor to="#main">Click Here</Scrollchor>&darr; for More Information About Us</p>
           </div>
         </div>
         <header id="header" className="alt">
@@ -41,7 +40,7 @@ class Home extends Component {
               </ul>
           </nav>
         </header>   
-        <main>
+        <main id="main">
         <section className="ourApp">
             <div className="parallax">
                 <h2 className="ourAppH2">Why Us?</h2>

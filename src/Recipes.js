@@ -4,9 +4,9 @@ import Popup from "reactjs-popup";
  
 export class Recipes extends Component {
     render() {
-        var html = "<div className='card-body'>";
+        var html = "<div class='card-body'>";
         var temp = html;
-        temp += "<h2 class = 'card-title'>" + this.props.data.name + "</h2><p className='card-text'>";
+        temp += "<h2 class = 'card-title'>" + this.props.data.name + "</h2><p class='card-text'>";
         let intro = "";
         if (this.props.data.description === "") {
             intro += "( No Description )";
@@ -18,7 +18,7 @@ export class Recipes extends Component {
         } else if (intro !== "") {
             temp += intro;
         }
-        temp += "</p><div className='d-flex justify-content-between'><span className='type-span'>";
+        temp += "</p><div class='d-flex justify-content-between'><span class='type-span'>";
         let tag = this.props.data.tags;
         let tagArr = tag.split(",");
         let tagNum = tagArr.length;
@@ -39,7 +39,7 @@ export class Recipes extends Component {
         if (parseInt(this.props.data.minutes) > 999) {
             this.props.data.minutes = 999;
         }
-        temp += "</span></div></div><div className='card-footer text-left text-muted'><p><small>" + ingreArr.length +
+        temp += "</span></div></div><div class='card-footer text-left text-muted'><p><small>" + ingreArr.length +
         " ingredients</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>"
         + this.props.data.minutes + " minutes</small></p>";
         temp = parse(temp);

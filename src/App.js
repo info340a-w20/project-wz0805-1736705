@@ -23,29 +23,42 @@ class App extends Component {
     });
   }
   
-  render() { 
+  render() {
     return (
         <Switch>
             <Route exact path='/'>
               <Home data={this.state.data} />
             </Route>
             <Route path='/Community'>
-              <Community data={this.state.data} />
+            <Community data={this.state.data} handleSort={this.onSort.bind(this)} handleShow={this.onShow.bind(this)}/>
             </Route>
             <Route path="/Question">
               <Question data={this.state.data} onUpdate={this.handleChange.bind(this)} />
             </Route>
             <Route path="/Post">
-              <Post data={this.state.data} />
+              <Post data={this.state.data} onUpdate={this.handleChange.bind(this)} />
             </Route>
         </Switch>
   )};
 
-  handleChange = (key, value) => {
+  onSort(){
+    let newState = this.state.data.sort((a, b) => (a.minutes - b.minutes));
+    this.setState({data:newState});
+    console.log(this.state);
+  }
+
+  onShow(){
+    let newState = this.state.data.sort((a, b) => (a.id - b.id));
+    this.setState({data:newState});
+    console.log(this.state);
+  }
+
+
+  handleChange = (arr) => {
     var obj = {};
-    obj[key] = value;
+    obj["data"] = arr;
     this.setState(obj);
-}
+  }
 }
 
 export default App;

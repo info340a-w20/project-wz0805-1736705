@@ -1,20 +1,18 @@
 import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import Recipes from "./Recipes";
-import Question from "./Question";
 import Scrollchor from 'react-scrollchor';
-
 
 class Community extends Component {
     constructor(props) {
         super(props);
-        this.state = { data: this.props.data};
-        
-        console.log(this.state);
+        this.state = {data: this.props.data};
     }
 
     render() {
-      return (
+        console.log(this.state);
+
+        return (
         <>
           <div className="hero-image1">
             <div className="drop">
@@ -24,7 +22,7 @@ class Community extends Component {
                 </button>
                 <div className="drop-content">
                     <Link to="/#homebody">Welcome</Link>
-                    <Link>Community</Link>
+                    <Link to="/Community#homebody">Community</Link>
                     <Link to="/Community#contact">Contact Us</Link>
                     <Link to="/Login">Login</Link>
                     
@@ -35,7 +33,7 @@ class Community extends Component {
             <p>Share and post in our community!</p>
             <div className="container" id="filter">
                 <p>Order By:&nbsp;&nbsp;&nbsp;
-                    <a href="#" className="btn btn-light my-1" id="time">Time</a>
+                    <button className="button btn btn-warning"  onClick={() =>this.props.handleSort()}>Time</button>
                 </p>
                 <div className="box">
                     <Link to="/Post" className="button" id="start">Post Your Own</Link>
@@ -50,7 +48,7 @@ class Community extends Component {
             <nav id="nav">
                 <ul>
                     <li><Link to="/#homebody">Welcome</Link></li>
-                    <li className="current"><b>Community</b></li>
+                    <li className="current"><Link to="/Community#homebody">Community</Link></li>
                     <li><Link to="/Community#contact">Contact Us</Link></li>
                     <li><Link to="/Login">Login</Link></li>
                 </ul>
@@ -60,7 +58,8 @@ class Community extends Component {
             <div className="album py-5" id="communitymain">
                 <div className="container">
                     <div className="row" id="showRecipes">
-                        
+                    <div style={{marginLeft:'auto', marginRight:'auto',textAlign:'center',width:'100%',marginBottom:'50px'}}>
+                        <Link to="/Community"  className="btn btn-warning" onClick={() =>this.props.handleShow()}> Show all recipes</Link></div>
                     </div>
                     <div className="row" id="recipeList">
                         { this.props.data.map(function(d, i) {
@@ -84,6 +83,7 @@ class Community extends Component {
       </>
       );
     }
+    
   }
 
 

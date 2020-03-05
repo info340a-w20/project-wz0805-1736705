@@ -69,7 +69,7 @@ class Post extends Component {
                                         <div className="form-group col-md-6">
                                             <label htmlFor="tags" className="title-text">Tags <span className="require">*</span><small>&nbsp;&nbsp;(Seperate by comma)</small></label>
                                             <i className="fas fa-search" aria-hidden="true"></i>
-                                            <input id="tags" className="form-control" type="text" placeholder="Search Tags" onInput={this.inputChange.bind(this)}/>
+                                            <input id="tags" className="form-control" type="text" placeholder="Give Some Tags" onInput={this.inputChange.bind(this)}/>
                                         </div>
                                         <div className="form-group col-md-6">
                                             <label htmlFor="minutes" className="title-text">Time Needed <span className="require">*</span><small>&nbsp;&nbsp;(Minutes)</small></label>
@@ -78,10 +78,8 @@ class Post extends Component {
                                     </div>
                                     <div className="form-row">
                                         <div className="form-group col-md-12">
-                                            <fieldset>
                                             <input type="checkbox" id="confirm" name="confirm" onInput={(e)=>{this.inputChange(e);this.submitRecipe(e)}}/>
                                             <label htmlFor="confirm">&nbsp;Information above are correct</label>
-                                            </fieldset>
                                         </div>
                                     </div>
                                     <div className="form-row">

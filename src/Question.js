@@ -103,10 +103,8 @@ class Question extends Component {
                                         </div>
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
-                                                <fieldset>
                                                 <input type="checkbox" id="confirm" name="confirm" onInput={(e)=>{this.inputChange(e);this.submitRecipe(e)}}/>
                                                 <label htmlFor="confirm">&nbsp;I already answer at least Q1 &amp; 3</label>
-                                                </fieldset>
                                             </div>
                                         </div>
                                         <div className="form-row">

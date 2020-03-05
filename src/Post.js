@@ -138,7 +138,7 @@ class Post extends Component {
         this.state.data.map((d) => {
             return temp.push(d);
         })
-        var newId = temp.length;
+        var newId = temp.length + 1;
         var arr = [];
         arr.push({id: newId, name: this.state.name, description: this.state.description, ingredients: this.state.ingredients,
             steps: this.state.steps, tags: this.state.tags, minutes: this.state.minutes});

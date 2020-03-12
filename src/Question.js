@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import LinkButton from './LinkButton';
 
-
-//Question1: form onSubmit problem
-//Question2: link to Community page when click Done
-
 class Question extends Component {
 
     constructor(props) {
@@ -20,6 +16,38 @@ class Question extends Component {
         }
         this.submitRecipe = this.submitRecipe.bind(this);
     }
+
+    inputChange(event) {
+        let obj = {};
+        obj[event.target.name] = event.target.value;
+        this.setState(obj);
+        this.updateButton();
+    }
+
+    updateButton() {
+        let disable = (this.state.time === "" || this.state.typeHealthy === "" || this.state.ingre === ""
+         || this.state.typeFruity === "" || this.state.comfort === "") ? true : false;
+        let obj = {};
+        obj["disabled"] = disable;
+        this.setState(obj);
+    }
+
+    submitRecipe(event) {
+        event.preventDefault();
+        var temp = [];
+        this.state.data.map((d) => {
+            if ((parseInt(d.minutes, 10) < parseInt(this.state.time,10)) && (d.tags.includes(this.state.typeHealthy)) &&
+            (parseInt(d.n_ingredients, 10) < parseInt(this.state.ingre, 10)) && (d.tags.includes(this.state.typeFruity)) &&
+            (d.tags.includes(this.state.comfort))) {
+                return temp.push(d);
+            }
+            return temp;
+        })
+        let obj = {};
+        obj["data"] = temp;
+        console.log(obj);
+        this.setState(obj);
+    };
 
     render() {
         console.log(this.state);
@@ -93,7 +121,7 @@ class Question extends Component {
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <fieldset>
-                                                    <legend>5. Do you need somthing comfort food?</legend>
+                                                    <legend>5. Do you need something comfort food?</legend>
                                                     <input type="radio" id="comfort" name="comfort" value="comfort" onInput={this.inputChange.bind(this)}/>
                                                     <label htmlFor="comfort">&nbsp;Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <input type="radio" id="course" name="comfort" value="course" onInput={this.inputChange.bind(this)}/>
@@ -104,7 +132,10 @@ class Question extends Component {
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <input type="checkbox" id="confirm" name="confirm" onInput={(e)=>{this.inputChange(e);this.submitRecipe(e)}}/>
-                                                <label htmlFor="confirm">&nbsp;I already answer at least Q1 &amp; 3</label>
+                                                <label htmlFor="confirm">&nbsp;I agree to the
+                                                    <a href="https://www.termsfeed.com/terms-conditions/48f76bd8e5f2333f79f1195ca2e325fb/" target="_blank">
+                                                    &nbsp;Terms and Conditions</a>
+                                                </label>
                                             </div>
                                         </div>
                                         <div className="form-row">
@@ -138,39 +169,6 @@ class Question extends Component {
             </div>
         );
     }
-
-    inputChange(event) {
-        let obj = {};
-        obj[event.target.name] = event.target.value;
-        this.setState(obj);
-        this.updateButton();
-    }
-
-    updateButton() {
-        let disable = (this.state.time === "" || this.state.typeHealthy === "" || this.state.ingre === ""
-         || this.state.typeFruity === "" || this.state.comfort === "") ? true : false;
-        let obj = {};
-        obj["disabled"] = disable;
-        this.setState(obj);
-    }
-
-    submitRecipe(event) {
-        event.preventDefault();
-        var temp = [];
-        this.state.data.map((d) => {
-            if ((parseInt(d.minutes, 10) < parseInt(this.state.time,10)) && (d.tags.includes(this.state.typeHealthy)) &&
-            (parseInt(d.n_ingredients, 10) < parseInt(this.state.ingre, 10)) && (d.tags.includes(this.state.typeFruity)) &&
-            (d.tags.includes(this.state.comfort))) {
-                return temp.push(d);
-            }
-            return temp;
-        })
-        let obj = {};
-        obj["data"] = temp;
-        console.log(obj);
-        this.setState(obj);
-
-    };
 }
 
 

@@ -18,6 +18,39 @@ class Post extends Component {
         this.submitRecipe = this.submitRecipe.bind(this);
     }
 
+    inputChange(event) {
+        let obj = {};
+        obj[event.target.id] = event.target.value;
+        this.setState(obj);
+        this.updateButton();
+    }
+
+    updateButton() {
+        let disable = (this.state.name === "" || this.state.description === "" || this.state.steps === ""
+         || this.state.tags === "" || this.state.ingredients === "" || this.state.minutes === "") ? true : false;
+        let obj = {};
+        obj["disabled"] = disable;
+        this.setState(obj);
+    }
+
+    submitRecipe(event) {
+        event.preventDefault();
+        var temp = [];
+        this.state.data.map((d) => {
+            return temp.push(d);
+        })
+        var newId = temp.length + 1;
+        var arr = [];
+        arr.push({id: newId, name: this.state.name, description: this.state.description, ingredients: this.state.ingredients,
+            steps: this.state.steps, tags: this.state.tags, minutes: this.state.minutes});
+        arr.push(...temp);
+        console.log(temp);
+        let obj = {};
+        obj["data"] = arr;
+        console.log(obj);
+        this.setState(obj);
+    };
+
     render() {
         console.log(this.state);
         return(
@@ -79,7 +112,10 @@ class Post extends Component {
                                     <div className="form-row">
                                         <div className="form-group col-md-12">
                                             <input type="checkbox" id="confirm" name="confirm" onInput={(e)=>{this.inputChange(e);this.submitRecipe(e)}}/>
-                                            <label htmlFor="confirm">&nbsp;Information above are correct</label>
+                                            <label htmlFor="confirm">&nbsp;I agree to the
+                                                <a href="https://www.termsfeed.com/terms-conditions/48f76bd8e5f2333f79f1195ca2e325fb/" target="_blank">
+                                                &nbsp;Terms and Conditions</a>
+                                            </label>
                                         </div>
                                     </div>
                                     <div className="form-row">
@@ -114,39 +150,5 @@ class Post extends Component {
             </div>
         )
     }
-
-    inputChange(event) {
-        let obj = {};
-        obj[event.target.id] = event.target.value;
-        this.setState(obj);
-        this.updateButton();
-    }
-
-    updateButton() {
-        let disable = (this.state.name === "" || this.state.description === "" || this.state.steps === ""
-         || this.state.tags === "" || this.state.ingredients === "" || this.state.minutes === "") ? true : false;
-        let obj = {};
-        obj["disabled"] = disable;
-        this.setState(obj);
-    }
-
-    submitRecipe(event) {
-        event.preventDefault();
-        var temp = [];
-        this.state.data.map((d) => {
-            return temp.push(d);
-        })
-        var newId = temp.length + 1;
-        var arr = [];
-        arr.push({id: newId, name: this.state.name, description: this.state.description, ingredients: this.state.ingredients,
-            steps: this.state.steps, tags: this.state.tags, minutes: this.state.minutes});
-        arr.push(...temp);
-        console.log(temp);
-        let obj = {};
-        obj["data"] = arr;
-        console.log(obj);
-        this.setState(obj);
-
-    };
 }
 export default Post;

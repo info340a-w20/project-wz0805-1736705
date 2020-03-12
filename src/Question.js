@@ -4,6 +4,7 @@ import LinkButton from './LinkButton';
 
 class Question extends Component {
 
+    // construct the state with data and input fields
     constructor(props) {
         super(props);
         this.state = {
@@ -17,6 +18,7 @@ class Question extends Component {
         this.submitRecipe = this.submitRecipe.bind(this);
     }
 
+    // change state with new input value
     inputChange(event) {
         let obj = {};
         obj[event.target.name] = event.target.value;
@@ -24,6 +26,7 @@ class Question extends Component {
         this.updateButton();
     }
 
+    // disable state change to disable button
     updateButton() {
         let disable = (this.state.time === "" || this.state.typeHealthy === "" || this.state.ingre === ""
          || this.state.typeFruity === "" || this.state.comfort === "") ? true : false;
@@ -32,6 +35,7 @@ class Question extends Component {
         this.setState(obj);
     }
 
+    // submit recipe and update the state with sorted recipes
     submitRecipe(event) {
         event.preventDefault();
         var temp = [];
@@ -49,8 +53,8 @@ class Question extends Component {
         this.setState(obj);
     };
 
+    
     render() {
-        console.log(this.state);
         return (
             <div className="parallax2">
                 <div>
@@ -82,7 +86,6 @@ class Question extends Component {
                                                     <input type="radio" id="60+" name="time" value="1000000000000" onInput={this.inputChange.bind(this)}/>
                                                     <label htmlFor="60+">&nbsp;Over 60 Minutes!</label>
                                                 </fieldset>
-
                                             </div>
                                         </div>
                                         <div className="form-row">

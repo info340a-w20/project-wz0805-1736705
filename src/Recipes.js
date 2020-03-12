@@ -3,6 +3,7 @@ import parse from 'html-react-parser';
 import Popup from "reactjs-popup";
 
 export class Recipes extends Component {
+    // render one recipe card
     render() {
         var html = "<div class='card-body'>";
         var temp = html;
@@ -49,6 +50,8 @@ export class Recipes extends Component {
    }
 
 }
+
+// handle with the popup window
 function Recipespop(data) {
     return (
         <Popup trigger={<button className="btn btn-warning btn-sm" style={{position: "absolute", bottom:"2.1%", right: "2.5%"}}> Details </button>}

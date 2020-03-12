@@ -4,6 +4,7 @@ import Scrollchor from 'react-scrollchor';
 
 class Home extends Component {
     render() {
+        
         return (
             <>
                 <div className="hero-image">

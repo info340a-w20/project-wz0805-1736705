@@ -10,8 +10,6 @@ class Community extends Component {
     }
 
     render() {
-        console.log(this.state);
-
         return (
         <>
           <div className="hero-image1">
@@ -63,12 +61,12 @@ class Community extends Component {
                     </div>
                     <div className="row" id="recipeList">
                         <div style={{marginLeft:'auto',marginRight:'auto',textAlign:'center',width:'100%',marginBottom:'50px'}}>
-                            <button className="button btn btn-warning" onClick={()=>(window.location.reload(),window.scrollTo(0,0))}>Show all recipes</button>
+                            <button className="button btn btn-warning" onClick={function(){window.location.reload(); window.scrollTo(0,0)}}>Show all recipes</button>
                         </div>
                         {this.props.data.map(function(d, i) {
                             return <Recipes key={i} data={d} />
                         })}
-                        {this.props.data.length == 0 &&
+                        {this.props.data.length === 0 &&
                             <div style={{left:"auto",right:"auto",textAlign:"center",width:"100%"}}><b style={{fontSize: "30px"}}>Your answers do not match any recipes</b>
                             <br/><Link to='/#homebody' style={{fontSize: "20px"}}>Try Again</Link></div>
                         }

@@ -133,7 +133,7 @@ class Question extends Component {
                                             <div className="form-group col-md-12">
                                                 <input type="checkbox" id="confirm" name="confirm" onInput={(e)=>{this.inputChange(e);this.submitRecipe(e)}}/>
                                                 <label htmlFor="confirm">&nbsp;I agree to the
-                                                    <a href="https://www.termsfeed.com/terms-conditions/48f76bd8e5f2333f79f1195ca2e325fb/" target="_blank">
+                                                    <a href="https://www.termsfeed.com/terms-conditions/48f76bd8e5f2333f79f1195ca2e325fb/" target="_blank" rel="noopener noreferrer">
                                                     &nbsp;Terms and Conditions</a>
                                                 </label>
                                             </div>

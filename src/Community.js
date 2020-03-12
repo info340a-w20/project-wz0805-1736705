@@ -38,7 +38,7 @@ class Community extends Component {
                     <Link to="/Post" className="button" id="start">Post Your Own</Link>
                 </div>
                 <br/>
-                <p><Scrollchor to="#communitymain">Click Here</Scrollchor>&darr; for Recipes</p>
+                <p><Link to="/Community#communitymain">Click Here</Link>&darr; for Recipes</p>
             </div>
         </div>
         </div>

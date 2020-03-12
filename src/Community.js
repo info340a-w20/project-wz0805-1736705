@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import Recipes from "./Recipes";
-import Scrollchor from 'react-scrollchor';
 
 class Community extends Component {
     constructor(props) {
@@ -38,7 +37,7 @@ class Community extends Component {
                     <Link to="/Post" className="button" id="start">Post Your Own</Link>
                 </div>
                 <br/>
-                <p><Link to="/Community#communitymain">Click Here</Link>&darr; for Recipes</p>
+                <p><Link to="/Community#communitymain" >Click Here</Link>&darr; for Recipes</p>
             </div>
         </div>
         </div>

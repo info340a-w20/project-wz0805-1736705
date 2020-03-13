@@ -3,6 +3,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 import Recipes from "./Recipes";
 import * as firebase from 'firebase/app';
 import Popup from "reactjs-popup";
+import GoogleButton from 'react-google-button'
 
 class Community extends Component {
     constructor(props) {
@@ -35,8 +36,8 @@ class Community extends Component {
    
                     {
                         this.props.user!==undefined
-                        ? <button onClick={()=>this.signOut()}>Sign out</button>
-                        : <button onClick={()=>this.signIn()}>Sign in with Google</button>
+                        ? <button className="button btn btn-warning" onClick={()=>this.signOut()}>Sign out</button>
+                        : <GoogleButton onClick={()=>this.signIn()} style={{fontSize: '13px'}}></GoogleButton>
                     }
                     </div>
             </Popup>
@@ -96,12 +97,8 @@ class Community extends Component {
                             modal
                             closeOnDocumentClick>
                                 <div>
-                                <p style={{color:"black"}}>Please sign in.</p>
-                                {
-                                    this.props.user!==undefined
-                                    ? <button onClick={()=>this.signOut()}>Sign out</button>
-                                    : <button onClick={()=>this.signIn()}>Sign in with Google</button>
-                                }
+                                    <p style={{color:"black"}}>Please sign in.</p>
+                                    <GoogleButton onClick={()=>this.signIn()} style={{fontSize: '13px'}}></GoogleButton>
                                 </div>
                         </Popup>} 
                     </div>

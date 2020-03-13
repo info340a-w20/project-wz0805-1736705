@@ -27,8 +27,17 @@ class Post extends Component {
                 modal
                 closeOnDocumentClick>
                     <div>
-                        <p>Hello, {this.props.user.displayName}</p>
-                        <Link to="/Community#homebody" onClick={()=>this.signOut()}>Sign out</Link>
+                        {
+                            this.props.user!==undefined
+                            ? <p style={{color: 'black'}}>Hello, {this.props.user.displayName}</p>
+                            : null
+                        }
+                        {
+                            this.props.user!==undefined
+                            ? <Link to="/Community#homebody" className="button btn btn-warning"onClick={()=>this.signOut()}>Sign out</Link>
+
+                            : null
+                        }
                     </div>
             </Popup>
         )

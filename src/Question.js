@@ -3,6 +3,8 @@ import { HashLink as Link } from 'react-router-hash-link';
 import LinkButton from './LinkButton';
 import * as firebase from 'firebase/app';
 import Popup from "reactjs-popup";
+import GoogleButton from 'react-google-button'
+
 
 class Question extends Component {
 
@@ -32,14 +34,14 @@ class Question extends Component {
                     <div>
                     {
                         this.props.user!==undefined
-                        ? <p>Hello, {this.props.user.displayName}</p>
-                        : <p>Please sign in.</p>
+                        ? <p style={{color: 'black'}}>Hello, {this.props.user.displayName}</p>
+                        : <p style={{color: 'black'}}>Please sign in.</p>
                     }
    
                     {
                         this.props.user!==undefined
-                        ? <button onClick={()=>this.signOut()}>Sign out</button>
-                        : <button onClick={()=>this.signIn()}>Sign in with Google</button>
+                        ? <button className="button btn btn-warning" onClick={()=>this.signOut()}>Sign out</button>
+                        : <GoogleButton onClick={()=>this.signIn()} style={{fontSize: '13px'}}></GoogleButton>
                     }
                     </div>
             </Popup>
@@ -110,7 +112,7 @@ class Question extends Component {
                             <Link to="/#homebody">Welcome</Link>
                             <Link to="/Community#homebody">Community</Link>
                             {this.props.user!==undefined ? <Link>My Post</Link> : null}
-                            <Link to="/Community#contact">Contact Us</Link>
+                            <Link to="/#contact">Contact Us</Link>
                             {this.loginPopup()}
                         </div>
                     </div>

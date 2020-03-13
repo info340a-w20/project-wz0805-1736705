@@ -12,7 +12,7 @@ class Home extends Component {
     loginPopup(){
         return(
             <Popup
-                trigger={<li>Login</li>}
+                trigger={<Link>Login</Link>}
                 modal
                 closeOnDocumentClick>
                     <div>
@@ -50,19 +50,21 @@ class Home extends Component {
         return (
             <>
                 <div className="hero-image">
-                    <div className="drop">
-                        <button className="dropbtn">
-                            <img id="menu" alt="menu bar" src="https://img.icons8.com/material-rounded/48/000000/menu.png"/>
-                            <i className="fa fa-caret-down"></i>
-                        </button>
-                        <div className="drop-content">
-                            <Link to="/#homebody">Welcome</Link>
-                            <Link to="/Community#homebody">Community</Link>
-                            <Link to="/ContactUs#homebody">Contact Us</Link>
-                            {this.loginPopup()}
+                    
+                    <div className="hero-text" style={{width:"100%", height:"100%"}}>
+                        <div className="drop">
+                            <button className="dropbtn">
+                                <img id="menu" alt="menu bar" src="https://img.icons8.com/material-rounded/48/000000/menu.png"/>
+                                <i className="fa fa-caret-down"></i>
+                            </button>
+                            <div className="drop-content">
+                                <Link to="/#homebody">Welcome</Link>
+                                <Link to="/Community#homebody">Community</Link>
+                                <Link to="/ContactUs#homebody">Contact Us</Link>
+                                {this.loginPopup()}
+                            </div>
                         </div>
-                    </div>
-                    <div className="hero-text">
+                        <div style={{paddingTop:"45vh"}}>
                         <h1>Some hints for what to cook? </h1>
                         <p>Here are several questions can help you decide</p>
                         <div className="box">
@@ -70,6 +72,7 @@ class Home extends Component {
                         </div>
                         <br/>
                         <p><Scrollchor to="#main">Click Here</Scrollchor>&darr; for More Information About Us</p>
+                        </div>
                     </div>
                 </div>
                 <header id="header" className="alt">
@@ -79,7 +82,7 @@ class Home extends Component {
                             <li className="current"><Link to="/#homebody">Welcome</Link></li>
                             <li><Link to="/Community#homebody">Community</Link></li>
                             <li><Link to="/#contact">Contact Us</Link></li>
-                            {this.loginPopup()}
+                            <li>{this.loginPopup()}</li>
                         
                         </ul>
                     </nav>
@@ -136,7 +139,7 @@ class Home extends Component {
                         <address><p>
                             Contact us at <a href="mailto:xz67@uw.edu">xz67@uw.edu</a>, or at <a href="mailto:alex.zhan.wu@icloud.com">alex.zhan.wu@icloud.com</a>.
                         </p></address>
-                        <p>&copy; 2020 Zhan Wu and Nina Zhang.</p>
+                        <p>&copy; 2020 Zhan Wu and Xiying Zhang.</p>
                     </footer>
                 </div>
             </>

@@ -13,7 +13,7 @@ class Community extends Component {
     loginPopup(){
         return(
             <Popup
-                trigger={<li>Login</li>}
+                trigger={<Link>Login</Link>}
                 modal
                 closeOnDocumentClick>
                     <div>
@@ -52,6 +52,8 @@ class Community extends Component {
         return (
         <>
             <div className="hero-image1">
+                
+                <div className="hero-text1" style={{width:"100%", height:"100%"}}>
                 <div className="drop">
                     <button className="dropbtn">
                         <img id="menu" alt="menu bar" src="https://img.icons8.com/material-rounded/48/000000/menu.png"/>
@@ -65,7 +67,7 @@ class Community extends Component {
                         
                     </div>
                 </div>
-                <div className="hero-text1">
+                    <div style={{paddingTop:"40vh"}}>
                     <h1>Communities</h1>
                     <p>Share and post in our community!</p>
                     <div className="container" id="filter">
@@ -76,16 +78,11 @@ class Community extends Component {
                         <div className="box">
                         {this.props.user!==undefined ? <Link to="/Post" className="button" id="start">Post Your Own</Link> :
                          <Popup
-                            trigger={<button className="button btn btn-warning">Post Your Own</button>}
+                            trigger={<Link className="button" id="start">Post Your Own</Link>}
                             modal
                             closeOnDocumentClick>
                                 <div>
-                                {
-                                    this.props.user!==undefined
-                                    ? <p>Hello, {this.props.user.displayName}</p>
-                                    : <p>Please sign in.</p>
-                                }
-                
+                                <p style={{color:"black"}}>Please sign in.</p>
                                 {
                                     this.props.user!==undefined
                                     ? <button onClick={()=>this.signOut()}>Sign out</button>
@@ -94,8 +91,8 @@ class Community extends Component {
                                 </div>
                         </Popup>} 
                         </div>
-                        <br/>
                         <p><Link to="/Community#communitymain" >Click Here</Link>&darr; for Recipes</p>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -106,7 +103,7 @@ class Community extends Component {
                         <li><Link to="/#homebody">Welcome</Link></li>
                         <li className="current"><Link to="/Community#homebody">Community</Link></li>
                         <li><Link to="/Community#contact">Contact Us</Link></li>
-                        {this.loginPopup()}
+                        <li>{this.loginPopup()}</li>
                     </ul>
                 </nav>
             </header>

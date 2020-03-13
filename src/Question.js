@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import LinkButton from './LinkButton';
-import LoginPopup from "./LoginPopup";
+import * as firebase from 'firebase/app';
+import Popup from "reactjs-popup";
 
 class Question extends Component {
 
@@ -15,8 +16,49 @@ class Question extends Component {
             ingre: "",
             typeFruity: "",
             comfort: "",
+            errorMessage:""
         }
         this.submitRecipe = this.submitRecipe.bind(this);
+    }
+
+    loginPopup(){
+        return(
+            <Popup
+                trigger={this.props.user!==undefined
+                    ? <Link>Sign Out</Link>
+                    : <Link>Sign In</Link>}
+                modal
+                closeOnDocumentClick>
+                    <div>
+                    {
+                        this.props.user!==undefined
+                        ? <p>Hello, {this.props.user.displayName}</p>
+                        : <p>Please sign in.</p>
+                    }
+   
+                    {
+                        this.props.user!==undefined
+                        ? <button onClick={()=>this.signOut()}>Sign out</button>
+                        : <button onClick={()=>this.signIn()}>Sign in with Google</button>
+                    }
+                    </div>
+            </Popup>
+        )
+    }
+
+    signIn() {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            var user = result.user;
+            this.props.updateUser(user);
+        }).catch((error)=> {
+            var errorMessage = error.message;
+            this.setState({errorMessage:errorMessage})
+        });
+    }
+
+    signOut = () => {
+        firebase.auth().signOut();
     }
 
     // change state with new input value
@@ -67,8 +109,9 @@ class Question extends Component {
                         <div className="drop-content">
                             <Link to="/#homebody">Welcome</Link>
                             <Link to="/Community#homebody">Community</Link>
-                            <Link to="/#contact">Contact Us</Link>
-                            <LoginPopup />
+                            {this.props.user!==undefined ? <Link>My Post</Link> : null}
+                            <Link to="/Community#contact">Contact Us</Link>
+                            {this.loginPopup()}
                         </div>
                     </div>
                     <div className="hero-text3" id="questionText">
@@ -165,8 +208,9 @@ class Question extends Component {
                         <ul>
                             <li className="current"><Link to="/#homebody">Welcome</Link></li>
                             <li><Link to="/Community#homebody">Community</Link></li>
-                            <li><Link to="/#contact">Contact Us</Link></li>
-                            <li><LoginPopup /></li>
+                            {this.props.user!==undefined ? <li><Link>My Post</Link></li> : null}
+                            <li><Link to="/Community#contact">Contact Us</Link></li>
+                            <li>{this.loginPopup()}</li>
                         </ul>
                     </nav>
                 </header>

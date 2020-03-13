@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import LinkButton from './LinkButton';
-import LoginPopup from "./LoginPopup";
+import * as firebase from 'firebase/app';
+import Popup from "reactjs-popup";
 
 class Post extends Component {
     constructor(props) {
@@ -14,9 +15,37 @@ class Post extends Component {
             steps: "",
             ingredients: "",
             minutes: "",
-            tags: ""
+            tags: "",
+            errorMessage:""
         };
         this.submitRecipe = this.submitRecipe.bind(this);
+    }
+    loginPopup(){
+        return(
+            <Popup
+                trigger={<Link>Sign Out</Link>}
+                modal
+                closeOnDocumentClick>
+                    <div>
+                        <p>Hello, {this.props.user.displayName}</p>
+                        <Link to="/Community#homebody" onClick={()=>this.signOut()}>Sign out</Link>
+                    </div>
+            </Popup>
+        )
+    }
+    signIn() {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            var user = result.user;
+            this.props.updateUser(user);
+        }).catch((error)=> {
+            var errorMessage = error.message;
+            this.setState({errorMessage:errorMessage})
+        });
+    }
+
+    signOut = () => {
+        firebase.auth().signOut();
     }
 
     inputChange(event) {
@@ -63,10 +92,11 @@ class Post extends Component {
                         <i className="fa fa-caret-down"></i>
                     </button>
                     <div className="drop-content">
-                        <Link to="/">Welcome</Link>
-                        <Link to="/Community">Community</Link>
-                        <Link to="/ContactUs">Contact Us</Link>
-                        <LoginPopup />
+                        <Link to="/#homebody">Welcome</Link>
+                        <Link to="/Community#homebody">Community</Link>
+                        {this.props.user!==undefined ? <Link>My Post</Link> : null}
+                        <Link to="/Community#contact">Contact Us</Link>
+                        {this.loginPopup()}
                     </div>
                 </div>
                 <div className="hero-text3">
@@ -141,10 +171,11 @@ class Post extends Component {
                 <h1 id="logo">Mood Recipes</h1>
                 <nav id="nav">
                     <ul>
-                        <li><Link to="/">Welcome</Link></li>
-                        <li className="current"><Link to="/Community">Community</Link></li>
-                        <li><Link to="/ContactUs">Contact Us</Link></li>
-                        <li><LoginPopup /></li>
+                    <li><Link to="/#homebody">Welcome</Link></li>
+                    <li className="current"><Link to="/Community#homebody">Community</Link></li>
+                    {this.props.user!==undefined ? <li><Link>My Post</Link></li> : null}
+                    <li><Link to="/Community#contact">Contact Us</Link></li>
+                    <li>{this.loginPopup()}</li>
                     </ul>
                 </nav>
             </header>

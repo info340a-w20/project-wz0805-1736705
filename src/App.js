@@ -72,10 +72,10 @@ class App extends Component {
                     <Community data={this.state.data} handleSort={this.onSort.bind(this)} handleShow={this.onShow.bind(this)} updateUser={this.updateUser.bind(this)} user={this.state.user}/>
                 </Route>
                 <Route path="/Question">
-                    <Question data={this.state.data} onUpdate={this.handleChange.bind(this)} />
+                    <Question data={this.state.data} onUpdate={this.handleChange.bind(this)} updateUser={this.updateUser.bind(this)} user={this.state.user}/>
                 </Route>
                 <Route path="/Post">
-                    {this.state.user ? <Post data={this.state.data} onUpdate={this.handleChange.bind(this)} /> : <Login update={this.updateUser.bind(this)} />}
+                    <Post data={this.state.data} onUpdate={this.handleChange.bind(this)} updateUser={this.updateUser.bind(this)} user={this.state.user}/>
                 </Route>
                 <Route path="/Login">
                     <Login />

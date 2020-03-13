@@ -8,21 +8,31 @@ class Community extends Component {
     constructor(props) {
         super(props);
         this.state = {data: this.props.data,
-                      errorMessage:""};
+                    errorMessage:"",
+                    limit:24};
+        this.onLoadMore = this.onLoadMore.bind(this);
     }
+    onLoadMore() {
+        this.setState({
+            limit: this.state.limit + 24
+        })
+    }
+
     loginPopup(){
         return(
             <Popup
-                trigger={<Link>Login</Link>}
+                trigger={this.props.user!==undefined
+                    ? <Link>Sign Out</Link>
+                    : <Link>Sign In</Link>}
                 modal
                 closeOnDocumentClick>
                     <div>
                     {
                         this.props.user!==undefined
-                        ? <p>Hello, {this.props.user.displayName}</p>
-                        : <p>Please sign in.</p>
+                        ? <p style={{color:"black"}}>Hello, {this.props.user.displayName}</p>
+                        : <p style={{color:"black"}}>Please sign in.</p>
                     }
-    
+   
                     {
                         this.props.user!==undefined
                         ? <button onClick={()=>this.signOut()}>Sign out</button>
@@ -32,6 +42,7 @@ class Community extends Component {
             </Popup>
         )
     }
+ 
     signIn() {
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -46,6 +57,7 @@ class Community extends Component {
     signOut = () => {
         firebase.auth().signOut();
     }
+    
 
     render() {
         console.log(this.props.user);
@@ -62,6 +74,7 @@ class Community extends Component {
                     <div className="drop-content">
                         <Link to="/#homebody">Welcome</Link>
                         <Link to="/Community#homebody">Community</Link>
+                        {this.props.user!==undefined ? <Link>My Post</Link> : null}
                         <Link to="/Community#contact">Contact Us</Link>
                         {this.loginPopup()}
                         
@@ -104,6 +117,7 @@ class Community extends Component {
                     <ul>
                         <li><Link to="/#homebody">Welcome</Link></li>
                         <li className="current"><Link to="/Community#homebody">Community</Link></li>
+                        {this.props.user!==undefined ? <li><Link>My Post</Link></li> : null}
                         <li><Link to="/Community#contact">Contact Us</Link></li>
                         <li>{this.loginPopup()}</li>
                     </ul>
@@ -121,7 +135,7 @@ class Community extends Component {
                             </div>
                             {
                             // render all the recipes
-                            this.props.data.map(function(d, i) {
+                            this.props.data.slice(0, this.state.limit).map(function(d, i) {
                                 return <Recipes key={i} data={d} />
                             })
                             }
@@ -129,6 +143,8 @@ class Community extends Component {
                                 <div style={{left:"auto",right:"auto",textAlign:"center",width:"100%"}}><b style={{fontSize: "30px"}}>Your answers do not match any recipes</b>
                                 <br/><Link to='/#homebody' style={{fontSize: "20px"}}>Try Again</Link></div>
                             }
+                            {this.props.data.length>this.state.limit &&
+                            <button className="button btn btn-warning" onClick={this.onLoadMore} style={{marginLeft:"auto", marginRight:"auto"}}>Load More</button>}
                         </div>
                     </div>
                 </div>

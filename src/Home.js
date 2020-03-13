@@ -12,7 +12,9 @@ class Home extends Component {
     loginPopup(){
         return(
             <Popup
-                trigger={<Link>Login</Link>}
+                trigger={this.props.user!==undefined
+                    ? <Link>Sign Out</Link>
+                    : <Link>Sign In</Link>}
                 modal
                 closeOnDocumentClick>
                     <div>
@@ -21,7 +23,7 @@ class Home extends Component {
                         ? <p>Hello, {this.props.user.displayName}</p>
                         : <p>Please sign in.</p>
                     }
-    
+   
                     {
                         this.props.user!==undefined
                         ? <button onClick={()=>this.signOut()}>Sign out</button>
@@ -31,6 +33,7 @@ class Home extends Component {
             </Popup>
         )
     }
+
     signIn() {
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -60,7 +63,8 @@ class Home extends Component {
                             <div className="drop-content">
                                 <Link to="/#homebody">Welcome</Link>
                                 <Link to="/Community#homebody">Community</Link>
-                                <Link to="/ContactUs#homebody">Contact Us</Link>
+                                {this.props.user!==undefined ? <li><Link>My Post</Link></li> : null}
+                                <Link to="/Community#contact">Contact Us</Link>
                                 {this.loginPopup()}
                             </div>
                         </div>
@@ -84,7 +88,8 @@ class Home extends Component {
                         <ul>
                             <li className="current"><Link to="/#homebody">Welcome</Link></li>
                             <li><Link to="/Community#homebody">Community</Link></li>
-                            <li><Link to="/#contact">Contact Us</Link></li>
+                            {this.props.user!==undefined ? <li><Link>My Post</Link></li> : null}
+                            <li><Link to="/Community#contact">Contact Us</Link></li>
                             <li>{this.loginPopup()}</li>
                         
                         </ul>

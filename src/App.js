@@ -1,25 +1,25 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import * as firebase from 'firebase/app';
 import Community from "./Community";
 import Home from "./Home";
 import Question from "./Question";
 import Post from "./Post";
+import Login from "./Login";
 import * as d3 from "d3";
 import data from "./data/file1.csv";
-import withFirebaseAuth from 'react-with-firebase-auth'
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
-import firebaseConfig from './firebaseConfig';
-
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            user: null
         };
+    }
+
+    updateUser(user) {
+        this.setState({user: user});
     }
 
     componentDidMount() {
@@ -28,6 +28,18 @@ class App extends Component {
             this.setState({ data: d });
         });
     }
+        /*this.authUnRegFunc = firebase.auth().onAuthStateChange((user)=>{
+            if (user) {
+                this.setState({user: user});
+            } else {
+                this.setState({user: undefined});
+            }
+        });
+    }
+
+    componentWillMount() {
+        this.authUnRegFunc();
+    }*/
 
     onSort(){
         let newState = this.state.data.sort((a, b) => (a.minutes - b.minutes));
@@ -48,14 +60,11 @@ class App extends Component {
         this.setState(obj);
     }
 
-    render() {
-        const {
-            user,
-            signOut,
-            signInWithGoogle,
-          } = this.props;
+   render() {
+        var users = firebase.auth().currentUser;
+        console.log(users);
+        console.log(firebase.auth());
         return (
-            <>
             <Switch>
                 <Route exact path='/'>
                     <Home data={this.state.data} />
@@ -67,34 +76,14 @@ class App extends Component {
                     <Question data={this.state.data} onUpdate={this.handleChange.bind(this)} />
                 </Route>
                 <Route path="/Post">
-                    <Post data={this.state.data} onUpdate={this.handleChange.bind(this)} />
+                    {this.state.user ? <Post data={this.state.data} onUpdate={this.handleChange.bind(this)} /> : <Login update={this.updateUser.bind(this)} />}
+                </Route>
+                <Route path="/Login">
+                    <Login />
                 </Route>
             </Switch>
-            <div className="App">
-            <header className="App-header">
-              {
-                user
-                  ? <p>Hello, {user.displayName}</p>
-                  : <p>Please sign in.</p>
-              }
-    
-              {
-                user
-                  ? <button onClick={signOut}>Sign out</button>
-                  : <button onClick={signInWithGoogle}>Sign in with Google</button>
-              }
-            </header>
-          </div>
-          </>
     )};
 }
-const firebaseAppAuth = firebaseApp.auth();
 
-const providers = {
-  googleProvider: new firebase.auth.GoogleAuthProvider(),
-};
 
-export default withFirebaseAuth({
-  providers,
-  firebaseAppAuth,
-})(App);
+export default App;

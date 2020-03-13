@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import LinkButton from './LinkButton';
+import LoginPopup from "./LoginPopup";
 
 class Post extends Component {
     constructor(props) {
@@ -65,7 +66,7 @@ class Post extends Component {
                         <Link to="/">Welcome</Link>
                         <Link to="/Community">Community</Link>
                         <Link to="/ContactUs">Contact Us</Link>
-                        <Link to="/Login">Login</Link>
+                        <LoginPopup />
                     </div>
                 </div>
                 <div className="hero-text3">
@@ -143,7 +144,7 @@ class Post extends Component {
                         <li><Link to="/">Welcome</Link></li>
                         <li className="current"><Link to="/Community">Community</Link></li>
                         <li><Link to="/ContactUs">Contact Us</Link></li>
-                        <li><Link to="/Login">Login</Link></li>
+                        <li><LoginPopup /></li>
                     </ul>
                 </nav>
             </header>

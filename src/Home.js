@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import Scrollchor from 'react-scrollchor';
+import LoginPopup from "./LoginPopup";
 
 class Home extends Component {
     render() {
@@ -17,7 +18,7 @@ class Home extends Component {
                             <Link to="/#homebody">Welcome</Link>
                             <Link to="/Community#homebody">Community</Link>
                             <Link to="/ContactUs#homebody">Contact Us</Link>
-                            <Link to="/Login">Login</Link>
+                            <LoginPopup />
                         </div>
                     </div>
                     <div className="hero-text">
@@ -37,7 +38,7 @@ class Home extends Component {
                             <li className="current"><Link to="/#homebody">Welcome</Link></li>
                             <li><Link to="/Community#homebody">Community</Link></li>
                             <li><Link to="/#contact">Contact Us</Link></li>
-                            <li><Link to="/Login">Login</Link></li>
+                            <li><LoginPopup /></li>
                         </ul>
                     </nav>
                 </header>   

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import LinkButton from './LinkButton';
+import LoginPopup from "./LoginPopup";
 
 class Question extends Component {
 
@@ -67,7 +68,7 @@ class Question extends Component {
                             <Link to="/#homebody">Welcome</Link>
                             <Link to="/Community#homebody">Community</Link>
                             <Link to="/#contact">Contact Us</Link>
-                            <Link to="/Login">Login</Link>
+                            <LoginPopup />
                         </div>
                     </div>
                     <div className="hero-text3" id="questionText">
@@ -165,7 +166,7 @@ class Question extends Component {
                             <li className="current"><Link to="/#homebody">Welcome</Link></li>
                             <li><Link to="/Community#homebody">Community</Link></li>
                             <li><Link to="/#contact">Contact Us</Link></li>
-                            <li><Link to="/Login">Login</Link></li>
+                            <li><LoginPopup /></li>
                         </ul>
                     </nav>
                 </header>

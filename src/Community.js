@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import Recipes from "./Recipes";
-import Popup from "reactjs-popup";
+import LoginPopup from "./LoginPopup";
 
 class Community extends Component {
     constructor(props) {
@@ -13,7 +13,6 @@ class Community extends Component {
     render() {
         return (
         <>
-            
             <div className="hero-image1">
                 <div className="drop">
                     <button className="dropbtn">
@@ -24,7 +23,8 @@ class Community extends Component {
                         <Link to="/#homebody">Welcome</Link>
                         <Link to="/Community#homebody">Community</Link>
                         <Link to="/Community#contact">Contact Us</Link>
-                        <Link to="/Login">Login</Link>
+                        <LoginPopup />
+                        
                     </div>
                 </div>
                 <div className="hero-text1">
@@ -50,7 +50,7 @@ class Community extends Component {
                         <li><Link to="/#homebody">Welcome</Link></li>
                         <li className="current"><Link to="/Community#homebody">Community</Link></li>
                         <li><Link to="/Community#contact">Contact Us</Link></li>
-                        <li><Link to="/Login">Login</Link></li>
+                        <li><LoginPopup /></li>
                     </ul>
                 </nav>
             </header>
@@ -91,42 +91,6 @@ class Community extends Component {
       );
     }
     
-}
-/*<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-function onSignIn(googleUser) {
-    // Useful data for your client-side scripts:
-    var profile = googleUser.getBasicProfile();
-    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-    console.log('Full Name: ' + profile.getName());
-    console.log('Given Name: ' + profile.getGivenName());
-    console.log('Family Name: ' + profile.getFamilyName());
-    console.log("Image URL: " + profile.getImageUrl());
-    console.log("Email: " + profile.getEmail());
-
-    // The ID token you need to pass to your backend:
-    var id_token = googleUser.getAuthResponse().id_token;
-    console.log("ID Token: " + id_token);
-}*/
-function Recipespop(data) {
-    return (
-        <Popup trigger={<button className="btn btn-warning btn-sm" style={{position: "absolute", bottom:"2.1%", right: "2.5%"}}> Details </button>}
-        modal
-        closeOnDocumentClick>
-            <div id="see" className="popup">
-                <div>
-
-                    <div className="content">
-                        <h2>{data.name.toUpperCase()} ({data.minutes}mins)</h2>
-                        {data.description}
-                        <h3>Required Ingredients</h3>
-                        <p>{data.ingredients}</p>
-                        <h3>Steps:</h3>
-                        <p>{data.steps}</p>
-                    </div>
-                </div>
-            </div>
-        </Popup>
-    )
 }
 
 export default Community;

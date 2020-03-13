@@ -1,9 +1,50 @@
 import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import Scrollchor from 'react-scrollchor';
-import LoginPopup from "./LoginPopup";
+import * as firebase from 'firebase/app';
+import Popup from "reactjs-popup";
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {errorMessage:""};
+    }
+    loginPopup(){
+        return(
+            <Popup
+                trigger={<li>Login</li>}
+                modal
+                closeOnDocumentClick>
+                    <div>
+                    {
+                        this.props.user!==undefined
+                        ? <p>Hello, {this.props.user.displayName}</p>
+                        : <p>Please sign in.</p>
+                    }
+    
+                    {
+                        this.props.user!==undefined
+                        ? <button onClick={()=>this.signOut()}>Sign out</button>
+                        : <button onClick={()=>this.signIn()}>Sign in with Google</button>
+                    }
+                    </div>
+            </Popup>
+        )
+    }
+    signIn() {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            var user = result.user;
+            this.props.updateUser(user);
+        }).catch((error)=> {
+            var errorMessage = error.message;
+            this.setState({errorMessage:errorMessage})
+        });
+    }
+
+    signOut = () => {
+        firebase.auth().signOut();
+    }
     render() {
         
         return (
@@ -18,7 +59,7 @@ class Home extends Component {
                             <Link to="/#homebody">Welcome</Link>
                             <Link to="/Community#homebody">Community</Link>
                             <Link to="/ContactUs#homebody">Contact Us</Link>
-                            <LoginPopup />
+                            {this.loginPopup()}
                         </div>
                     </div>
                     <div className="hero-text">
@@ -38,7 +79,8 @@ class Home extends Component {
                             <li className="current"><Link to="/#homebody">Welcome</Link></li>
                             <li><Link to="/Community#homebody">Community</Link></li>
                             <li><Link to="/#contact">Contact Us</Link></li>
-                            <li><LoginPopup /></li>
+                            {this.loginPopup()}
+                        
                         </ul>
                     </nav>
                 </header>   

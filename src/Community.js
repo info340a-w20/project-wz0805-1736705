@@ -1,16 +1,54 @@
 import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import Recipes from "./Recipes";
-import LoginPopup from "./LoginPopup";
+import * as firebase from 'firebase/app';
+import Popup from "reactjs-popup";
 
 class Community extends Component {
     constructor(props) {
         super(props);
-        this.state = {data: this.props.data};
+        this.state = {data: this.props.data,
+                      errorMessage:""};
+    }
+    loginPopup(){
+        return(
+            <Popup
+                trigger={<li>Login</li>}
+                modal
+                closeOnDocumentClick>
+                    <div>
+                    {
+                        this.props.user!==undefined
+                        ? <p>Hello, {this.props.user.displayName}</p>
+                        : <p>Please sign in.</p>
+                    }
+    
+                    {
+                        this.props.user!==undefined
+                        ? <button onClick={()=>this.signOut()}>Sign out</button>
+                        : <button onClick={()=>this.signIn()}>Sign in with Google</button>
+                    }
+                    </div>
+            </Popup>
+        )
+    }
+    signIn() {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            var user = result.user;
+            this.props.updateUser(user);
+        }).catch((error)=> {
+            var errorMessage = error.message;
+            this.setState({errorMessage:errorMessage})
+        });
     }
 
+    signOut = () => {
+        firebase.auth().signOut();
+    }
 
     render() {
+        console.log(this.props.user);
         return (
         <>
             <div className="hero-image1">
@@ -23,7 +61,7 @@ class Community extends Component {
                         <Link to="/#homebody">Welcome</Link>
                         <Link to="/Community#homebody">Community</Link>
                         <Link to="/Community#contact">Contact Us</Link>
-                        <LoginPopup />
+                        {this.loginPopup()}
                         
                     </div>
                 </div>
@@ -36,7 +74,25 @@ class Community extends Component {
                             <button className="button btn btn-warning"  onClick={() =>this.props.handleShow()}>Latest Upload</button>
                         </p>
                         <div className="box">
-                            <Link to="/Post" className="button" id="start">Post Your Own</Link>
+                        {this.props.user!==undefined ? <Link to="/Post" className="button" id="start">Post Your Own</Link> :
+                         <Popup
+                            trigger={<button className="button btn btn-warning">Post Your Own</button>}
+                            modal
+                            closeOnDocumentClick>
+                                <div>
+                                {
+                                    this.props.user!==undefined
+                                    ? <p>Hello, {this.props.user.displayName}</p>
+                                    : <p>Please sign in.</p>
+                                }
+                
+                                {
+                                    this.props.user!==undefined
+                                    ? <button onClick={()=>this.signOut()}>Sign out</button>
+                                    : <button onClick={()=>this.signIn()}>Sign in with Google</button>
+                                }
+                                </div>
+                        </Popup>} 
                         </div>
                         <br/>
                         <p><Link to="/Community#communitymain" >Click Here</Link>&darr; for Recipes</p>
@@ -50,7 +106,7 @@ class Community extends Component {
                         <li><Link to="/#homebody">Welcome</Link></li>
                         <li className="current"><Link to="/Community#homebody">Community</Link></li>
                         <li><Link to="/Community#contact">Contact Us</Link></li>
-                        <li><LoginPopup /></li>
+                        {this.loginPopup()}
                     </ul>
                 </nav>
             </header>

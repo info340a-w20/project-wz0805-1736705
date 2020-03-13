@@ -14,7 +14,7 @@ class App extends Component {
         super(props);
         this.state = {
             data: [],
-            user: null
+            user: undefined
         };
     }
 
@@ -27,19 +27,20 @@ class App extends Component {
         d3.csv(data).then((d) => {
             this.setState({ data: d });
         });
-    }
-        /*this.authUnRegFunc = firebase.auth().onAuthStateChange((user)=>{
+        this.authUnRegFunc = firebase.auth().onAuthStateChanged((user)=>{
             if (user) {
-                this.setState({user: user});
-            } else {
-                this.setState({user: undefined});
+              // User is signed in.
+              this.setState({user:user,popUp:false,view:"init"});
+            } else{
+              this.setState({loading:false,user:undefined,popUp:false,view:"init"});
             }
         });
     }
 
-    componentWillMount() {
+    componentWillUnmount(){
         this.authUnRegFunc();
-    }*/
+    }
+    
 
     onSort(){
         let newState = this.state.data.sort((a, b) => (a.minutes - b.minutes));
@@ -61,16 +62,14 @@ class App extends Component {
     }
 
    render() {
-        var users = firebase.auth().currentUser;
-        console.log(users);
-        console.log(firebase.auth());
+        console.log(this.state.user);
         return (
             <Switch>
                 <Route exact path='/'>
-                    <Home data={this.state.data} />
+                    <Home data={this.state.data} updateUser={this.updateUser.bind(this)} user={this.state.user}/>
                 </Route>
                 <Route path='/Community'>
-                    <Community data={this.state.data} handleSort={this.onSort.bind(this)} handleShow={this.onShow.bind(this)}/>
+                    <Community data={this.state.data} handleSort={this.onSort.bind(this)} handleShow={this.onShow.bind(this)} updateUser={this.updateUser.bind(this)} user={this.state.user}/>
                 </Route>
                 <Route path="/Question">
                     <Question data={this.state.data} onUpdate={this.handleChange.bind(this)} />

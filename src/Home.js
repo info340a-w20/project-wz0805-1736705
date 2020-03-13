@@ -64,13 +64,16 @@ class Home extends Component {
                                 {this.loginPopup()}
                             </div>
                         </div>
-                        <div style={{paddingTop:"45vh"}}>
+                        <div style={{paddingTop:"41vh"}}>
                         <h1>Some hints for what to cook? </h1>
                         <p>Here are several questions can help you decide</p>
                         <div className="box">
+                            <br id='space'/>
                             <Link className="button" to="/Question" id="start">Get Started</Link>
                         </div>
-                        <br/>
+                        <br id='space'/>
+                        <br id='space'/>
+                        <br id='space'/>
                         <p><Scrollchor to="#main">Click Here</Scrollchor>&darr; for More Information About Us</p>
                         </div>
                     </div>

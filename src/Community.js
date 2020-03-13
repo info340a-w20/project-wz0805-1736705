@@ -67,18 +67,19 @@ class Community extends Component {
                         
                     </div>
                 </div>
-                    <div style={{paddingTop:"40vh"}}>
-                    <h1>Communities</h1>
-                    <p>Share and post in our community!</p>
-                    <div className="container" id="filter">
-                        <p>Order By:&nbsp;&nbsp;&nbsp;
-                            <button className="button btn btn-warning"  onClick={() =>this.props.handleSort()}>Least Time</button>&nbsp;&nbsp;&nbsp;
-                            <button className="button btn btn-warning"  onClick={() =>this.props.handleShow()}>Latest Upload</button>
-                        </p>
-                        <div className="box">
+                <div style={{paddingTop:"40vh"}}>
+                <h1>Communities</h1>
+                <p>Share and post in our community!</p>
+                <div className="container" id="filter">
+                    <p>Order By:&nbsp;&nbsp;&nbsp;
+                        <button className="button btn btn-warning"  onClick={() =>this.props.handleSort()}>Least Time</button>&nbsp;&nbsp;&nbsp;
+                        <button className="button btn btn-warning"  onClick={() =>this.props.handleShow()}>Latest Upload</button>
+                    </p>
+                    <div className="box">
+                        <br id="space"/>
                         {this.props.user!==undefined ? <Link to="/Post" className="button" id="start">Post Your Own</Link> :
-                         <Popup
-                            trigger={<Link className="button" id="start">Post Your Own</Link>}
+                            <Popup
+                            trigger={<Link className="button" id="start" style={{top: 0}}>Post Your Own</Link>}
                             modal
                             closeOnDocumentClick>
                                 <div>
@@ -90,10 +91,11 @@ class Community extends Component {
                                 }
                                 </div>
                         </Popup>} 
-                        </div>
-                        <p><Link to="/Community#communitymain" >Click Here</Link>&darr; for Recipes</p>
                     </div>
-                    </div>
+                    <br id="space"/>
+                    <p><Link to="/Community#communitymain" >Click Here</Link>&darr; for Recipes</p>
+                </div>
+                </div>
                 </div>
             </div>
             <header id="header" className="alt">

@@ -1,3 +1,5 @@
+import firebase from 'firebase';
+
 const firebaseConfig = {
     apiKey: "AIzaSyAXaI2nvmqT3bCHfWLD5BCZHxIHt0HSIDI",
     authDomain: "wz0805-1736705-mood-recipe.firebaseapp.com",
@@ -8,4 +10,8 @@ const firebaseConfig = {
     appId: "1:598619903147:web:1fecaedf6456e36c8b53ee",
     measurementId: "G-1K91NDGQ3P"
 };
+
+firebase.initializeApp(firebaseConfig);
+firebase.auth().useDeviceLanguage();
+
 export default firebaseConfig;

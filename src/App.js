@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import * as firebase from 'firebase/app';
+import firebase from 'firebase';
 import Community from "./Community";
 import Home from "./Home";
 import Question from "./Question";
 import Post from "./Post";
-import Login from "./Login";
+
 import * as d3 from "d3";
 import data from "./data/file1.csv";
+
+
 
 class App extends Component {
     constructor(props) {
@@ -23,10 +25,19 @@ class App extends Component {
     }
 
     componentDidMount() {
+        
         // Load data
-        d3.csv(data).then((d) => {
-            this.setState({ data: d });
-        });
+        this.dataRef = firebase.database().ref();
+        //console.log(this.dataRef);
+        this.dataRef.on('value', (snapshot) => {
+            var tempArr = [];
+            console.log(snapshot.val());
+            Object.values(snapshot.val()).map(function(d) {
+                tempArr.push(d);
+            })
+            this.setState({data: tempArr});
+        })
+        console.log(this.state);
         this.authUnRegFunc = firebase.auth().onAuthStateChanged((user)=>{
             if (user) {
               // User is signed in.
@@ -76,9 +87,6 @@ class App extends Component {
                 </Route>
                 <Route path="/Post">
                     <Post data={this.state.data} onUpdate={this.handleChange.bind(this)} updateUser={this.updateUser.bind(this)} user={this.state.user}/>
-                </Route>
-                <Route path="/Login">
-                    <Login />
                 </Route>
             </Switch>
     )};

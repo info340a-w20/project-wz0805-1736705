@@ -10,7 +10,7 @@ class Community extends Component {
         super(props);
         this.state = {data: this.props.data,
                     errorMessage:"",
-                    limit:24};
+                    limit: 24};
         this.onLoadMore = this.onLoadMore.bind(this);
     }
     onLoadMore() {

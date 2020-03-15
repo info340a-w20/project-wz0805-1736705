@@ -21,19 +21,36 @@ class App extends Component {
         this.setState({user: user});
     }
 
-    componentDidMount() {
+    componentDidMount() {/*
+        const ref = firebase.database().ref();
+        ref.once("value")
+        .then(function(snapshot) {
+            var all = [];
+            var categories = [];
+            //LOOPING EACH CHILD AND PUSHING TO ARRAY
+            snapshot.forEach(item => {
+                const temp = item.val();
+                console.log(Object.values(temp));
+                categories = [...categories, ...Object.values(temp)];
+                return false;
+            });
+            console.log(categories);
+            this.setState({data:categories});
+        }.bind(this)); */
         
-        // Load data
         this.dataRef = firebase.database().ref();
-        //console.log(this.dataRef);
-        this.dataRef.on('value', (snapshot) => {
-            var tempArr = [];
-            Object.values(snapshot.val()).map(function(d) {
-                tempArr.unshift(d);
-            })
-            this.setState({data: tempArr});
-        })
-        console.log(this.state);
+        this.dataRef.on("value", function(snapshot) {
+            var all = [];
+            //LOOPING EACH CHILD AND PUSHING TO ARRAY
+            snapshot.forEach(item => {
+                const temp = item.val();
+                all = [...all, ...Object.values(temp).reverse()];
+                return false;
+            });
+            console.log(all);
+            this.setState({data:all});
+        }.bind(this));
+
         this.authUnRegFunc = firebase.auth().onAuthStateChanged((user)=>{
             if (user) {
               // User is signed in.
@@ -56,7 +73,7 @@ class App extends Component {
     }
 
     onShow(){
-        let newState = this.state.data.sort((a, b) => (a.id - b.id));
+        let newState = this.state.data.sort((a, b) => (b.id - a.id));
         this.setState({data:newState});
         console.log(this.state);
     }
@@ -69,7 +86,7 @@ class App extends Component {
     }
 
    render() {
-        console.log(this.state.user);
+        console.log(this.state.data);
         return (
             <Switch>
                 <Route exact path='/'>

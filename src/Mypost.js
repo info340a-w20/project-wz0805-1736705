@@ -5,7 +5,7 @@ import firebase from 'firebase';
 import Popup from "reactjs-popup";
 import GoogleButton from 'react-google-button'
 
-class Community extends Component {
+class Mypost extends Component {
     constructor(props) {
         super(props);
         this.state = {data: this.props.data,
@@ -82,26 +82,13 @@ class Community extends Component {
                     </div>
                 </div>
                 <div style={{paddingTop:"40vh"}}>
-                <h1>Communities</h1>
+                <h1>My Post</h1>
                 <p>Share and post in our community!</p>
                 <div className="container" id="filter">
                     <p>Order By:&nbsp;&nbsp;&nbsp;
                         <button className="button btn btn-warning"  onClick={() =>this.props.handleSort()}>Least Time</button>&nbsp;&nbsp;&nbsp;
                         <button className="button btn btn-warning"  onClick={() =>this.props.handleShow()}>Latest Upload</button>
                     </p>
-                    <div className="box">
-                        <br id="space"/>
-                        {this.props.user!==undefined ? <Link to="/Post" className="button" id="start">Post Your Own</Link> :
-                            <Popup
-                            trigger={<Link className="button" id="start" style={{top: 0}}>Post Your Own</Link>}
-                            modal
-                            closeOnDocumentClick>
-                                <div>
-                                    <p style={{color:"black"}}>Please sign in.</p>
-                                    <GoogleButton onClick={()=>this.signIn()} style={{fontSize: '13px'}}></GoogleButton>
-                                </div>
-                        </Popup>} 
-                    </div>
                     <br id="space"/>
                     <p><Link to="/Community#communitymain" >Click Here</Link>&darr; for Recipes</p>
                 </div>
@@ -124,11 +111,12 @@ class Community extends Component {
                 <div className="album py-5" id="communitymain">
                     <div className="container">
                         <div className="row" id="showRecipes">
+                        
+                        </div>
+                        <div className="row" id="recipeList">
                             <div style={{marginLeft:'auto',marginRight:'auto',textAlign:'center',width:'100%',marginBottom:'50px'}}>
                                 <button className="button btn btn-warning" onClick={function(){window.location.reload(); window.scrollTo(0,0)}}>Show all recipes</button>
                             </div>
-                        </div>
-                        <div className="row" id="recipeList">
                             {
                             // render all the recipes
                             this.props.data.slice(0, this.state.limit).map(function(d, i) {
@@ -160,4 +148,4 @@ class Community extends Component {
     
 }
 
-export default Community;
+export default Mypost;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import Recipes from "./Recipes";
-import * as firebase from 'firebase/app';
+import firebase from 'firebase';
 import Popup from "reactjs-popup";
 import GoogleButton from 'react-google-button'
 

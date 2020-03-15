@@ -6,9 +6,6 @@ import Home from "./Home";
 import Question from "./Question";
 import Post from "./Post";
 
-import * as d3 from "d3";
-import data from "./data/file1.csv";
-
 
 
 class App extends Component {
@@ -31,9 +28,8 @@ class App extends Component {
         //console.log(this.dataRef);
         this.dataRef.on('value', (snapshot) => {
             var tempArr = [];
-            console.log(snapshot.val());
             Object.values(snapshot.val()).map(function(d) {
-                tempArr.push(d);
+                tempArr.unshift(d);
             })
             this.setState({data: tempArr});
         })
@@ -41,9 +37,9 @@ class App extends Component {
         this.authUnRegFunc = firebase.auth().onAuthStateChanged((user)=>{
             if (user) {
               // User is signed in.
-              this.setState({user:user,popUp:false,view:"init"});
+              this.setState({user:user});
             } else{
-              this.setState({loading:false,user:undefined,popUp:false,view:"init"});
+              this.setState({user:undefined});
             }
         });
     }

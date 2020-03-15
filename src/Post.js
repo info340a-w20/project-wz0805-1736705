@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import LinkButton from './LinkButton';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase';
 import Popup from "reactjs-popup";
+
 
 class Post extends Component {
     constructor(props) {
@@ -16,7 +17,8 @@ class Post extends Component {
             ingredients: "",
             minutes: "",
             tags: "",
-            errorMessage:""
+            errorMessage:"",
+            email: ""
         };
         this.submitRecipe = this.submitRecipe.bind(this);
     }
@@ -29,7 +31,7 @@ class Post extends Component {
                     <div>
                         {
                             this.props.user!==undefined
-                            ? <p style={{color: 'black'}}>Hello, {this.props.user.displayName}</p>
+                            ? <p>Hello, {this.props.user.displayName}</p>
                             : null
                         }
                         {
@@ -78,17 +80,26 @@ class Post extends Component {
         this.state.data.map((d) => {
             return temp.push(d);
         })
-        var newId = temp.length + 1;
+        var newId = temp[0].id + 1;
         var arr = [];
+        var userEmail = firebase.auth().currentUser && firebase.auth().currentUser.email;
+        var tempObject = {};
+        tempObject['email'] = userEmail;
+        this.setState(tempObject);
+        console.log(this.state);
         arr.push({id: newId, name: this.state.name, description: this.state.description, ingredients: this.state.ingredients,
-            steps: this.state.steps, tags: this.state.tags, minutes: this.state.minutes});
+            steps: this.state.steps, tags: this.state.tags, minutes: this.state.minutes, email: this.state.email});
+        this.updateFirebase(arr, newId);
         arr.push(...temp);
         console.log(temp);
         let obj = {};
         obj["data"] = arr;
-        console.log(obj);
         this.setState(obj);
     };
+
+    updateFirebase(Arr, id) {
+        firebase.database().ref(id).set(Arr[0]);
+    }
 
     render() {
         console.log(this.state);

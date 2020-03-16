@@ -152,8 +152,7 @@ class Home extends Component {
                             on a cold winter night, you and your family members are celebrating for your graduation, and you want to eat some warm
                             Asian food, the system will be likely to recommend you Chinese Spicy Hotpot, Japanese Sukiyaki, Korean Budae Jjigae,
                             and some similar food which can make you warmer, good for sharing. The system can make the best choices based on your
-                            occasions, the number of people, the current weather, and so on. The users can have the most appropriate food on each
-                            specific day and time.
+                            own answers.
                         </p>
                         <p>
                             We are also integrating the functions of “community” where all users could share their own recipes to the whole community so that other people can have more ideas on what they want to cook. People can see the latest and most popular shared recipes on this app. It also has recipes sorted by locations or countries, for example, Mexican Food, American Food, Italian Food, etc. When the user finds the recipe they like, they can add the ingredients in that recipe into their shopping cart and purchase it online, and the online grocery stores will deliver the ingredients to users, or the users can choose to pick them up at a local store. The users can save time on shopping for the ingredients they need.

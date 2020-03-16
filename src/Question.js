@@ -26,37 +26,23 @@ class Question extends Component {
     loginPopup(){
         return(
             <Popup
-                trigger={this.props.user!==undefined
-                    ? <Link>Sign Out</Link>
-                    : <Link>Sign In</Link>}
+                trigger={<Link>Sign Out</Link>}
                 modal
                 closeOnDocumentClick>
                     <div>
-                    {
-                        this.props.user!==undefined
-                        ? <p style={{color: 'black'}}>Hello, {this.props.user.displayName}</p>
-                        : <p style={{color: 'black'}}>Please sign in.</p>
-                    }
-   
-                    {
-                        this.props.user!==undefined
-                        ? <button className="button btn btn-warning" onClick={()=>this.signOut()}>Sign out</button>
-                        : <GoogleButton onClick={()=>this.signIn()} style={{fontSize: '13px'}}></GoogleButton>
-                    }
+                        {
+                            this.props.user!==undefined
+                            ? <p className="loginScreen">Hello, {this.props.user.displayName}</p>
+                            : null
+                        }
+                        {
+                            this.props.user!==undefined
+                            ? <div className="loginScreen"><Link to="/#homebody" className="button btn btn-warning" onClick={()=>this.signOut()}>Sign out</Link></div>
+                            : null
+                        }
                     </div>
             </Popup>
         )
-    }
-
-    signIn() {
-        var provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider).then(function(result) {
-            var user = result.user;
-            this.props.updateUser(user);
-        }).catch((error)=> {
-            var errorMessage = error.message;
-            this.setState({errorMessage:errorMessage})
-        });
     }
 
     signOut = () => {
@@ -94,7 +80,6 @@ class Question extends Component {
         })
         let obj = {};
         obj["data"] = temp;
-        console.log(obj);
         this.setState(obj);
     };
 
@@ -111,7 +96,7 @@ class Question extends Component {
                         <div className="drop-content">
                             <Link to="/#homebody">Welcome</Link>
                             <Link to="/Community#homebody">Community</Link>
-                            {this.props.user!==undefined ? <Link>My Post</Link> : null}
+                            {this.props.user!==undefined ? <Link to="/MyPost#homebody">My Post</Link> : null}
                             <Link to="/#contact">Contact Us</Link>
                             {this.loginPopup()}
                         </div>
@@ -210,7 +195,7 @@ class Question extends Component {
                         <ul>
                             <li className="current"><Link to="/#homebody">Welcome</Link></li>
                             <li><Link to="/Community#homebody">Community</Link></li>
-                            {this.props.user!==undefined ? <li><Link>My Post</Link></li> : null}
+                            {this.props.user!==undefined ? <li><Link to="/MyPost#homebody">My Post</Link></li> : null}
                             <li><Link to="/Community#contact">Contact Us</Link></li>
                             <li>{this.loginPopup()}</li>
                         </ul>

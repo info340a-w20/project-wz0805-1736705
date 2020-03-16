@@ -30,25 +30,32 @@ class Community extends Component {
                     <div>
                     {
                         this.props.user!==undefined
-                        ? <p style={{color:"black"}}>Hello, {this.props.user.displayName}</p>
-                        : <p style={{color:"black"}}>Please sign in.</p>
+                        ? <p className="loginScreen">Hello, {this.props.user.displayName}</p>
+                        : <p className="loginScreen">Please sign in.</p>
                     }
    
                     {
                         this.props.user!==undefined
-                        ? <button className="button btn btn-warning" onClick={()=>this.signOut()}>Sign out</button>
-                        : <GoogleButton onClick={()=>this.signIn()} style={{fontSize: '13px'}}></GoogleButton>
+                        ? <div className="loginScreen"><button className="button btn btn-warning" onClick={()=>this.signOut()}>Sign out</button></div>
+                        : <GoogleButton className="loginScreen" onClick={()=>this.signIn()} style={{fontSize: '13px'}}></GoogleButton>
                     }
                     </div>
             </Popup>
         )
     }
  
+    componentDidUpdate(prevProps) {
+        if (prevProps == this.props) {
+            window.location.reload();
+        }
+    }
+
     signIn() {
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider).then(function(result) {
             var user = result.user;
             this.props.updateUser(user);
+
         }).catch((error)=> {
             var errorMessage = error.message;
             this.setState({errorMessage:errorMessage})
@@ -57,11 +64,11 @@ class Community extends Component {
 
     signOut = () => {
         firebase.auth().signOut();
+        window.location.reload();
     }
     
 
     render() {
-        console.log(this.props.user);
         return (
         <>
             <div className="hero-image1">
@@ -75,14 +82,14 @@ class Community extends Component {
                     <div className="drop-content">
                         <Link to="/#homebody">Welcome</Link>
                         <Link to="/Community#homebody">Community</Link>
-                        {this.props.user!==undefined ? <Link>My Post</Link> : null}
+                        {this.props.user!==undefined ? <Link to="/MyPost#homebody">My Post</Link> : null}
                         <Link to="/Community#contact">Contact Us</Link>
                         {this.loginPopup()}
                         
                     </div>
                 </div>
                 <div style={{paddingTop:"40vh"}}>
-                <h1>Communities</h1>
+                <h1>Community</h1>
                 <p>Share and post in our community!</p>
                 <div className="container" id="filter">
                     <p>Order By:&nbsp;&nbsp;&nbsp;
@@ -97,8 +104,8 @@ class Community extends Component {
                             modal
                             closeOnDocumentClick>
                                 <div>
-                                    <p style={{color:"black"}}>Please sign in.</p>
-                                    <GoogleButton onClick={()=>this.signIn()} style={{fontSize: '13px'}}></GoogleButton>
+                                    <p className="loginScreen">Please sign in.</p>
+                                    <GoogleButton className="loginScreen" onClick={()=>this.signIn()} style={{fontSize: '13px'}}></GoogleButton>
                                 </div>
                         </Popup>} 
                     </div>
@@ -114,7 +121,7 @@ class Community extends Component {
                     <ul>
                         <li><Link to="/#homebody">Welcome</Link></li>
                         <li className="current"><Link to="/Community#homebody">Community</Link></li>
-                        {this.props.user!==undefined ? <li><Link>My Post</Link></li> : null}
+                        {this.props.user!==undefined ? <li><Link to="/MyPost#homebody">My Post</Link></li> : null}
                         <li><Link to="/Community#contact">Contact Us</Link></li>
                         <li>{this.loginPopup()}</li>
                     </ul>

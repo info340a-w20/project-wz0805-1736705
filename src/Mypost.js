@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
-import Recipes from "./Recipes";
+import UserRecipes from "./UserRecipes";
 import firebase from 'firebase';
 import Popup from "reactjs-popup";
-import GoogleButton from 'react-google-button'
 
 class Mypost extends Component {
     constructor(props) {
@@ -22,49 +21,39 @@ class Mypost extends Component {
     loginPopup(){
         return(
             <Popup
-                trigger={this.props.user!==undefined
-                    ? <Link>Sign Out</Link>
-                    : <Link>Sign In</Link>}
+                trigger={<Link>Sign Out</Link>}
                 modal
                 closeOnDocumentClick>
                     <div>
-                    {
-                        this.props.user!==undefined
-                        ? <p style={{color:"black"}}>Hello, {this.props.user.displayName}</p>
-                        : <p style={{color:"black"}}>Please sign in.</p>
-                    }
-   
-                    {
-                        this.props.user!==undefined
-                        ? <button className="button btn btn-warning" onClick={()=>this.signOut()}>Sign out</button>
-                        : <GoogleButton onClick={()=>this.signIn()} style={{fontSize: '13px'}}></GoogleButton>
-                    }
+                        {
+                            this.props.user!==undefined
+                            ? <p className="loginScreen">Hello, {this.props.user.displayName}</p>
+                            : null
+                        }
+                        {
+                            this.props.user!==undefined
+                            ? <div className="loginScreen"><Link to="/Community#homebody" className="button btn btn-warning" onClick={()=>this.signOut()}>Sign out</Link></div>
+                            : null
+                        }
                     </div>
             </Popup>
         )
-    }
- 
-    signIn() {
-        var provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider).then(function(result) {
-            var user = result.user;
-            this.props.updateUser(user);
-        }).catch((error)=> {
-            var errorMessage = error.message;
-            this.setState({errorMessage:errorMessage})
-        });
     }
 
     signOut = () => {
         firebase.auth().signOut();
     }
     
+    updateFirebase(Arr, em) {
+        let userId = firebase.auth().currentUser && firebase.auth().currentUser.uid;
+        firebase.database().ref('/'+userId).push(Arr[0]);
+    }
 
     render() {
-        console.log(this.props.user);
+        var keyArr = [];
         return (
         <>
-            <div className="hero-image1">
+            <div className="hero-image4">
                 
                 <div className="hero-text1" style={{width:"100%", height:"100%"}}>
                 <div className="drop">
@@ -75,7 +64,7 @@ class Mypost extends Component {
                     <div className="drop-content">
                         <Link to="/#homebody">Welcome</Link>
                         <Link to="/Community#homebody">Community</Link>
-                        {this.props.user!==undefined ? <Link>My Post</Link> : null}
+                        {this.props.user!==undefined ? <Link to="/MyPost#homebody">My Post</Link> : null}
                         <Link to="/Community#contact">Contact Us</Link>
                         {this.loginPopup()}
                         
@@ -83,14 +72,19 @@ class Mypost extends Component {
                 </div>
                 <div style={{paddingTop:"40vh"}}>
                 <h1>My Post</h1>
-                <p>Share and post in our community!</p>
+                <p>See all the recipes you have posted</p>
                 <div className="container" id="filter">
                     <p>Order By:&nbsp;&nbsp;&nbsp;
                         <button className="button btn btn-warning"  onClick={() =>this.props.handleSort()}>Least Time</button>&nbsp;&nbsp;&nbsp;
                         <button className="button btn btn-warning"  onClick={() =>this.props.handleShow()}>Latest Upload</button>
                     </p>
+                    <div className="box">
+                        <br id="space"/>
+                        <Link to="/Post" className="button" id="start">Post Your Own</Link>
+                    </div>
+
                     <br id="space"/>
-                    <p><Link to="/Community#communitymain" >Click Here</Link>&darr; for Recipes</p>
+                    <p><Link to="/MyPost#communitymain" >Click Here</Link>&darr; for Recipes</p>
                 </div>
                 </div>
                 </div>
@@ -100,8 +94,8 @@ class Mypost extends Component {
                 <nav id="nav">
                     <ul>
                         <li><Link to="/#homebody">Welcome</Link></li>
-                        <li className="current"><Link to="/Community#homebody">Community</Link></li>
-                        {this.props.user!==undefined ? <li><Link>My Post</Link></li> : null}
+                        <li><Link to="/Community#homebody">Community</Link></li>
+                        {this.props.user!==undefined ? <li className="current"><Link to="/MyPost#homebody">My Post</Link></li> : null}
                         <li><Link to="/Community#contact">Contact Us</Link></li>
                         <li>{this.loginPopup()}</li>
                     </ul>
@@ -110,22 +104,21 @@ class Mypost extends Component {
             <main>
                 <div className="album py-5" id="communitymain">
                     <div className="container">
-                        <div className="row" id="showRecipes">
-                        
-                        </div>
-                        <div className="row" id="recipeList">
-                            <div style={{marginLeft:'auto',marginRight:'auto',textAlign:'center',width:'100%',marginBottom:'50px'}}>
-                                <button className="button btn btn-warning" onClick={function(){window.location.reload(); window.scrollTo(0,0)}}>Show all recipes</button>
-                            </div>
+                        <div className="row" id="recipeList" style={{marginTop: '80px'}}>
                             {
-                            // render all the recipes
-                            this.props.data.slice(0, this.state.limit).map(function(d, i) {
-                                return <Recipes key={i} data={d} />
+                            // render recipes
+                            this.props.currKey.map(function(d) {
+                                keyArr.push(d);
                             })
                             }
+                            {
+                            this.props.data.slice(0, this.state.limit).map(function(d, i) {
+                                return <UserRecipes key={i} data={d} currKey={keyArr[i]} allData={this.props.data}/>
+                            }, this)
+                            }
                             {this.props.data.length === 0 &&
-                                <div style={{left:"auto",right:"auto",textAlign:"center",width:"100%"}}><b style={{fontSize: "30px"}}>Your answers do not match any recipes</b>
-                                <br/><Link to='/#homebody' style={{fontSize: "20px"}}>Try Again</Link></div>
+                                <div style={{left:"auto",right:"auto",textAlign:"center",width:"100%"}}><b style={{fontSize: "30px"}}>You haven't posted any recipes yet</b>
+                                <br/><Link to='/Post' style={{fontSize: "20px"}}>Click Here to post your first recipe!</Link></div>
                             }
                             {this.props.data.length>this.state.limit &&
                             <button className="button btn btn-warning" onClick={this.onLoadMore} style={{marginLeft:"auto", marginRight:"auto"}}>Load More</button>}

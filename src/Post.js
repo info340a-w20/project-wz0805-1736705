@@ -32,29 +32,17 @@ class Post extends Component {
                    <div>
                        {
                            this.props.user!==undefined
-                           ? <p>Hello, {this.props.user.displayName}</p>
+                           ? <p className="loginScreen">Hello, {this.props.user.displayName}</p>
                            : null
                        }
                        {
                            this.props.user!==undefined
-                           ? <Link to="/Community#homebody" className="button btn btn-warning"onClick={()=>this.signOut()}>Sign out</Link>
- 
+                           ? <div className="loginScreen"><Link to="/Community#homebody" className="button btn btn-warning" onClick={()=>this.signOut()}>Sign out</Link></div>
                            : null
                        }
                    </div>
            </Popup>
        )
-   }
- 
-   signIn() {
-       var provider = new firebase.auth.GoogleAuthProvider();
-       firebase.auth().signInWithPopup(provider).then(function(result) {
-           var user = result.user;
-           this.props.updateUser(user);
-       }).catch((error)=> {
-           var errorMessage = error.message;
-           this.setState({errorMessage:errorMessage})
-       });
    }
  
    signOut = () => {
@@ -85,16 +73,13 @@ class Post extends Component {
        var newId = temp[0].id + 1;
        var arr = [];
        var userEmail = firebase.auth().currentUser && firebase.auth().currentUser.email;
-       console.log();
        var tempObject = {};
        tempObject['email'] = userEmail;
        this.setState(tempObject);
-       console.log(this.state);
        arr.push({id: newId, name: this.state.name, description: this.state.description, ingredients: this.state.ingredients,
            steps: this.state.steps, tags: this.state.tags, minutes: this.state.minutes, email: this.state.email});
        this.updateFirebase(arr, newId, userEmail);
        arr.push(...temp);
-       console.log(temp);
        let obj = {};
        obj["data"] = arr;
        this.setState(obj);
@@ -106,7 +91,6 @@ class Post extends Component {
    }
  
    render() {
-       console.log(this.state);
        return(
            <div className="parallax2">
                <div className="hero-image3">
@@ -118,7 +102,7 @@ class Post extends Component {
                    <div className="drop-content">
                        <Link to="/#homebody">Welcome</Link>
                        <Link to="/Community#homebody">Community</Link>
-                       {this.props.user!==undefined ? <Link>My Post</Link> : null}
+                       {this.props.user!==undefined ? <Link to="/MyPost#homebody">My Post</Link> : null}
                        <Link to="/Community#contact">Contact Us</Link>
                        {this.loginPopup()}
                    </div>
@@ -197,7 +181,7 @@ class Post extends Component {
                    <ul>
                    <li><Link to="/#homebody">Welcome</Link></li>
                    <li className="current"><Link to="/Community#homebody">Community</Link></li>
-                   {this.props.user!==undefined ? <li><Link>My Post</Link></li> : null}
+                   {this.props.user!==undefined ? <li><Link to="/MyPost#homebody">My Post</Link></li> : null}
                    <li><Link to="/Community#contact">Contact Us</Link></li>
                    <li>{this.loginPopup()}</li>
                    </ul>

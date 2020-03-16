@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import parse from 'html-react-parser';
 import Popup from "reactjs-popup";
+import firebase from 'firebase';
 
-export class Recipes extends Component {
+export class UserRecipes extends Component {
     // render one recipe card
     render() {
         var html = "<div class='card-body'>";
@@ -45,35 +46,42 @@ export class Recipes extends Component {
         + this.props.data.minutes + " minutes</small></p>";
         temp = parse(temp);
         return(
-            <div className='col-sm-12 col-md-6 col-lg-4'><div className='card mb-4 box-shadow'>{temp}{Recipespop(this.props.data)}</div></div>
+            <div className='col-sm-12 col-md-6 col-lg-4'><div className='card mb-4 box-shadow'>{temp}{UserRecipespop(this.props.data, this.props.currKey, this.props.allData)}</div></div>
         )
    }
 
 }
 
 // handle with the popup window
-function Recipespop(data) {
+function UserRecipespop(data, currKey, allData) {
     return (
-        <Popup trigger={<button className="btn btn-warning btn-sm" style={{position: "absolute", bottom:"2.1%", right: "2.5%"}}> Details </button>}
-        modal
-        closeOnDocumentClick>
-            <div id="see" className="popup">
-                <div>
-
-                    <div className="content">
-                        <h2>{data.name.toUpperCase()} ({data.minutes}mins)</h2>
-                        <br/>
-                        {data.description}
-                        <br/>
-                        <br/>
-                        <h3>Required Ingredients:</h3>
-                        <p>{data.ingredients}</p>
-                        <h3>Steps:</h3>
-                        <p>{data.steps}</p>
+        <>
+            <button
+            className="btn btn-danger btn-sm"
+            onClick={()=>{firebase.database().ref('/' + firebase.auth().currentUser.uid + '/' + currKey).remove(); if (allData.length <= 1) {window.location.reload()}}}
+            style={{position: "absolute", bottom:"2.1%", right: "2.5%"}}>
+                Delete
+            </button>
+            <Popup trigger={<button className="btn btn-warning btn-sm" style={{position: "absolute", bottom:"2.1%", right: "21.5%"}}> Details </button>}
+            modal
+            closeOnDocumentClick>
+                <div id="see" className="popup">
+                    <div>
+                        <div className="content">
+                            <h2>{data.name.toUpperCase()} ({data.minutes}mins)</h2>
+                            <br/>
+                            {data.description}
+                            <br/>
+                            <br/>
+                            <h3>Required Ingredients:</h3>
+                            <p>{data.ingredients}</p>
+                            <h3>Steps:</h3>
+                            <p>{data.steps}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </Popup>
+            </Popup>
+        </>
     )
 }
-export default Recipes;
+export default UserRecipes;

@@ -21,18 +21,24 @@ class Home extends Component {
                     <div>
                     {
                         this.props.user!==undefined
-                        ? <p style={{color: 'black'}}>Hello, {this.props.user.displayName}</p>
-                        : <p style={{color: 'black'}}>Please sign in.</p>
+                        ? <p className="loginScreen">Hello, {this.props.user.displayName}</p>
+                        : <p className="loginScreen">Please sign in.</p>
                     }
    
                     {
                         this.props.user!==undefined
-                        ? <button className="button btn btn-warning" onClick={()=>this.signOut()}>Sign out</button>
-                        : <GoogleButton onClick={()=>this.signIn()} style={{fontSize: '13px'}}></GoogleButton>
+                        ? <div className="loginScreen"><button className="button btn btn-warning" onClick={()=>this.signOut()}>Sign out</button></div>
+                        : <GoogleButton className="loginScreen" onClick={()=>{this.signIn()}} style={{fontSize: '13px'}}></GoogleButton>
                     }
                     </div>
             </Popup>
         )
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps == this.props) {
+            window.location.reload();
+        }
     }
 
     signIn() {
@@ -40,6 +46,7 @@ class Home extends Component {
         firebase.auth().signInWithPopup(provider).then(function(result) {
             var user = result.user;
             this.props.updateUser(user);
+
         }).catch((error)=> {
             var errorMessage = error.message;
             this.setState({errorMessage:errorMessage})
@@ -48,6 +55,7 @@ class Home extends Component {
 
     signOut = () => {
         firebase.auth().signOut();
+        window.location.reload();
     }
     render() {
         
@@ -64,7 +72,7 @@ class Home extends Component {
                             <div className="drop-content">
                                 <Link to="/#homebody">Welcome</Link>
                                 <Link to="/Community#homebody">Community</Link>
-                                {this.props.user!==undefined ? <Link>My Post</Link> : null}
+                                {this.props.user!==undefined ? <Link to="/MyPost#homebody">My Post</Link> : null}
                                 <Link to="#contact">Contact Us</Link>
                                 {this.loginPopup()}
                             </div>
@@ -74,7 +82,17 @@ class Home extends Component {
                         <p>Here are several questions can help you decide</p>
                         <div className="box">
                             <br id='space'/>
-                            <Link className="button" to="/Question" id="start">Get Started</Link>
+                            {this.props.user!==undefined ? <Link className="button" to="/Question" id="start">Get Started</Link> :
+                            <Popup
+                            trigger={<Link className="button" id="start" style={{top: 0}}>Get Started</Link>}
+                            modal
+                            closeOnDocumentClick>
+                                <div>
+                                    <p className="loginScreen">Please sign in.</p>
+                                    <GoogleButton className="loginScreen" onClick={()=>this.signIn()} style={{fontSize: '13px'}}></GoogleButton>
+                                </div>
+                            </Popup>}
+                            
                         </div>
                         <br id='space'/>
                         <br id='space'/>
@@ -89,7 +107,7 @@ class Home extends Component {
                         <ul>
                             <li className="current"><Link to="/#homebody">Welcome</Link></li>
                             <li><Link to="/Community#homebody">Community</Link></li>
-                            {this.props.user!==undefined ? <li><Link>My Post</Link></li> : null}
+                            {this.props.user!==undefined ? <li><Link to="/MyPost#homebody">My Post</Link></li> : null}
                             <li><Link to="#contact">Contact Us</Link></li>
                             <li>{this.loginPopup()}</li>
                         

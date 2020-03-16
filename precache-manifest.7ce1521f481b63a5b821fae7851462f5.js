@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "db6ec4d905930a9c509ba7c5f593df14",
+    "revision": "01dded66b85a4a8231c0913d7bbfe5a0",
     "url": "/project-wz0805-1736705/index.html"
   },
   {
-    "revision": "fa5ced3cb4409c6ff7b6",
+    "revision": "4a007a3ad849b3ddf174",
     "url": "/project-wz0805-1736705/static/css/2.47e06e2e.chunk.css"
   },
   {
-    "revision": "53783321397452b91c3f",
-    "url": "/project-wz0805-1736705/static/css/main.d6bb57a4.chunk.css"
+    "revision": "3cbf13ede029b39911f9",
+    "url": "/project-wz0805-1736705/static/css/main.5f34aeb0.chunk.css"
   },
   {
-    "revision": "fa5ced3cb4409c6ff7b6",
-    "url": "/project-wz0805-1736705/static/js/2.c4994d75.chunk.js"
+    "revision": "4a007a3ad849b3ddf174",
+    "url": "/project-wz0805-1736705/static/js/2.ad4f8e2a.chunk.js"
   },
   {
-    "revision": "03f571cd0c3e4eb469324779825a0883",
-    "url": "/project-wz0805-1736705/static/js/2.c4994d75.chunk.js.LICENSE.txt"
+    "revision": "c4eb1d82b1eab5cad889f9146f721719",
+    "url": "/project-wz0805-1736705/static/js/2.ad4f8e2a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "53783321397452b91c3f",
-    "url": "/project-wz0805-1736705/static/js/main.0519ca34.chunk.js"
+    "revision": "3cbf13ede029b39911f9",
+    "url": "/project-wz0805-1736705/static/js/main.7e56339e.chunk.js"
   },
   {
     "revision": "f526e54ec658226d40bb",
@@ -32,12 +32,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/project-wz0805-1736705/static/media/background.8c0edfea.jpg"
   },
   {
-    "revision": "88b4fb9f8ba9382fb8cba1776873fedd",
-    "url": "/project-wz0805-1736705/static/media/file1.88b4fb9f.csv"
-  },
-  {
     "revision": "f52d408483647bc06b0bfa8ea6e04b86",
     "url": "/project-wz0805-1736705/static/media/pasta.f52d4084.jpg"
+  },
+  {
+    "revision": "ae6a22e5041b0c0c486b1e29f11e3e68",
+    "url": "/project-wz0805-1736705/static/media/post.ae6a22e5.jpg"
   },
   {
     "revision": "2e60864cca5e270a5bd2142f0562ee8d",

@@ -130,7 +130,7 @@ class Home extends Component {
                         </p>
                         <p>
                             The existing applications designated to help people cooking are still in lack of some important features the users may need.
-                            One of the very intelligent cooking websites that inspire us is the <a href="https://www.supercook.com/#/recipes">Supercook</a>
+                            One of the very intelligent cooking websites that inspire us is the <a href="https://www.supercook.com/#/recipes">Supercook </a> 
                             which allows users to enter the ingredients they have in the fridge and generate ready-to-cook recipes. It is quite easy to use,
                             but the lack of features that allows people to find recipes within their limited time frame is one issue which this type of application
                             always has. For people who are busy, the recipes it generates that require a long time cooking cannot meet their needs well.

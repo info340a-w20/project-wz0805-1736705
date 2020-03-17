@@ -36,7 +36,7 @@ class Home extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps == this.props) {
+        if (prevProps === this.props) {
             window.location.reload();
         }
     }

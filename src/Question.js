@@ -3,7 +3,6 @@ import { HashLink as Link } from 'react-router-hash-link';
 import LinkButton from './LinkButton';
 import firebase from 'firebase';
 import Popup from "reactjs-popup";
-import GoogleButton from 'react-google-button'
 
 
 class Question extends Component {

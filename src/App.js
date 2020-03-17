@@ -29,7 +29,7 @@ class App extends Component {
             //LOOPING EACH CHILD AND PUSHING TO ARRAY
             snapshot.forEach(item => {
                 const temp = item.val();
-                if (firebase.auth().currentUser !== null && item.key == firebase.auth().currentUser.uid) {
+                if (firebase.auth().currentUser !== null && item.key === firebase.auth().currentUser.uid) {
                     this.setState({currentData: Object.values(temp).reverse()});
                     this.setState({currentKey: Object.keys(temp).reverse()});
                 }

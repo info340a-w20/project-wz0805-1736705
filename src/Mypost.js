@@ -108,7 +108,7 @@ class Mypost extends Component {
                             {
                             // render recipes
                             this.props.currKey.map(function(d) {
-                                keyArr.push(d);
+                                return keyArr.push(d);
                             })
                             }
                             {
